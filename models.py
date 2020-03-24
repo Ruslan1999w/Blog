@@ -147,19 +147,9 @@ class Image(models.Model):
         db_table = 'image'
 
 
-class Likes(models.Model):
-    id_person = models.ForeignKey('Person', models.DO_NOTHING, db_column='id_person', blank=True, null=True)
-    id_note = models.ForeignKey('Note', models.DO_NOTHING, db_column='id_note', blank=True, null=True)
-    mark = models.SmallIntegerField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'likes'
-
-
 class Note(models.Model):
     id_note = models.AutoField(primary_key=True)
-    id_person = models.ForeignKey('Person', models.DO_NOTHING, db_column='id_person', blank=True, null=True)
+    id_auth_user = models.ForeignKey(AuthUser, models.DO_NOTHING, db_column='id_auth_user', blank=True, null=True)
     id_post = models.ForeignKey('Post', models.DO_NOTHING, db_column='id_post', blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     date_publish = models.DateTimeField(blank=True, null=True)
@@ -169,28 +159,6 @@ class Note(models.Model):
     class Meta:
         managed = False
         db_table = 'note'
-
-
-class Person(models.Model):
-    id_person = models.AutoField(primary_key=True)
-    login = models.CharField(max_length=45)
-    email = models.CharField(max_length=45)
-    first_name = models.CharField(max_length=45)
-    surname = models.CharField(max_length=45)
-    pass_field = models.CharField(db_column='pass', max_length=45)  # Field renamed because it was a Python reserved word.
-
-    class Meta:
-        managed = False
-        db_table = 'person'
-
-
-class PersonPost(models.Model):
-    id_person = models.ForeignKey(Person, models.DO_NOTHING, db_column='id_person', blank=True, null=True)
-    id_post = models.ForeignKey('Post', models.DO_NOTHING, db_column='id_post', blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'person_post'
 
 
 class Post(models.Model):
@@ -218,7 +186,7 @@ class PostTag(models.Model):
 
 class RatingPost(models.Model):
     id_post = models.ForeignKey(Post, models.DO_NOTHING, db_column='id_post', blank=True, null=True)
-    id_person = models.ForeignKey(Person, models.DO_NOTHING, db_column='id_person', blank=True, null=True)
+    id_auth_user = models.ForeignKey(AuthUser, models.DO_NOTHING, db_column='id_auth_user', blank=True, null=True)
     mark = models.SmallIntegerField(blank=True, null=True)
 
     class Meta:
@@ -233,3 +201,12 @@ class Tag(models.Model):
     class Meta:
         managed = False
         db_table = 'tag'
+
+
+class UserPost(models.Model):
+    id_auth_user = models.ForeignKey(AuthUser, models.DO_NOTHING, db_column='id_auth_user', blank=True, null=True)
+    id_post = models.ForeignKey(Post, models.DO_NOTHING, db_column='id_post', blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'user_post'

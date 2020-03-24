@@ -11,6 +11,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAdminUser, AllowAny, IsAuthenticated
 from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
+from data.serializers import *
 
 
 class UserViewSet(viewsets.ViewSet):  # класс предоставляющий возможности работы с пользователем: листинг всех
@@ -31,7 +32,7 @@ class UserViewSet(viewsets.ViewSet):  # класс предоставляющи�
         if permission_classes(IsAdminUser):
             return Response({'token': "sd"}, status=status.HTTP_200_OK)
         else:
-            return Response({"resp": "пошел на хуй"})
+            return Response({"resp": "пошел на "})
 
 
 class AuthViewSet(viewsets.ViewSet):  # класс предоставляющий методы авторизации, регистрации и окончания сессии
@@ -65,7 +66,7 @@ class AuthViewSet(viewsets.ViewSet):  # класс предоставляющи�
         return Response({'token': token.key},
                         status=HTTP_200_OK)
 
-    @action(methods=['post'], detail=False, permission_classes=[AllowAny])
+    @action(methods=['post'], detail=False, permission_classes=[IsAuthenticated])
     def logout(self, request, pk=None):  # функция разлогинивания, т.е. удаление токена из бд
         # user = authenticate(request.data["username"], password=request.data["password"])
         user_logout = Token.objects.get(key=request.data["token"])
