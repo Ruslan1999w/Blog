@@ -17,11 +17,13 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
 from rest_framework import routers
-from user_auth.views import UserViewSet, AuthViewSet
+from user_auth.views import *
+from articles.views import *
 
 router = routers.DefaultRouter()
 router.register(r'auth', AuthViewSet, basename='auth')
 router.register(r'users', UserViewSet, basename='users')
+router.register(r'articles', ArticlesViewSet,basename='articles')
 
 
 urlpatterns = [
