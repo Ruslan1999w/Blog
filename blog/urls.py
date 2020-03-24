@@ -23,7 +23,8 @@ from articles.views import *
 router = routers.DefaultRouter()
 router.register(r'auth', AuthViewSet, basename='auth')
 router.register(r'users', UserViewSet, basename='users')
-router.register(r'articles', ArticlesViewSet,basename='articles')
+router.register(r'articles', ArticlesViewSet, basename='articles')
+router.register(r'rates', RateViewSet, basename='rates')
 
 
 urlpatterns = [
