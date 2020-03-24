@@ -24,6 +24,7 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ('id', 'username', 'email', 'password')
 
+
 class PostSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
@@ -39,11 +40,18 @@ class PostSerializer(serializers.ModelSerializer):
 class UserPostSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
-        #print("validated_data['id_post']  " + str(validated_data['id_post']))
-       # print("validated_data['id_auth_user']  " + str(validated_data['id_auth_user']))
+        # print("validated_data['id_post']  " + str(validated_data['id_post']))
+        # print("validated_data['id_auth_user']  " + str(validated_data['id_auth_user']))
         print(validated_data)
 
-        return user_post
+        return "user_post"
+
+    class Meta:
+        model = UserPost
+        fields = ('id_auth_user', 'id_post')
+
+
+class RatingPostSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = UserPost
