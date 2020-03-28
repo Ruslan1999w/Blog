@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./comp_style/style.scss";
 
-class Content extends React.Component {
+class Articles_list extends React.Component {
   state = {
     error: false,
     isLoading: false,
@@ -30,8 +30,9 @@ class Content extends React.Component {
             <div class="right">
               <div class="desc">
                 <p> {item.description}</p>
-                <p>item.like_count {item.like_count}</p>
-                <p>item.like_count{item.dislike_count}</p>
+                <p>
+                  {item.like_count} {item.dislike_count}
+                </p>
               </div>
               <div class="im">
                 <img src={item.date_publish}></img>
@@ -43,4 +44,4 @@ class Content extends React.Component {
     );
   }
 }
-export default Content;
+export default Articles_list;
