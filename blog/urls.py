@@ -19,13 +19,14 @@ from django.views.generic import TemplateView
 from rest_framework import routers
 from user_auth.views import *
 from articles.views import *
+from comments.views import *
 
 router = routers.DefaultRouter()
 router.register(r'auth', AuthViewSet, basename='auth')
 router.register(r'users', UserViewSet, basename='users')
 router.register(r'articles', ArticlesViewSet, basename='articles')
 router.register(r'rates', RateViewSet, basename='rates')
-
+router.register(r'notes', NotesViewSet, basename='notes')
 
 urlpatterns = [
     path('admin/', admin.site.urls),

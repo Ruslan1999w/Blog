@@ -1,5 +1,5 @@
 from rest_framework.validators import UniqueValidator
-from data.models import Post, UserPost
+from data.models import Post, UserPost, Note
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth.models import User
@@ -25,6 +25,12 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ('id', 'username', 'email', 'password')
 
 
+class NoteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Note
+        fields = ['description', 'date_publish', 'id_post']
+
+
 class PostSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
@@ -32,9 +38,11 @@ class PostSerializer(serializers.ModelSerializer):
                                    date_publish=validated_data['date_publish'])
         return post
 
+    posts = NoteSerializer(many=True)
+
     class Meta:
         model = Post
-        fields = ('title', 'description', 'date_publish', 'like_count', 'dislike_count')
+        fields = ('title', 'description', 'date_publish', 'like_count', 'dislike_count','posts')
 
 
 class UserPostSerializer(serializers.ModelSerializer):
@@ -51,8 +59,23 @@ class UserPostSerializer(serializers.ModelSerializer):
         fields = ('id_auth_user', 'id_post')
 
 
-class RatingPostSerializer(serializers.ModelSerializer):
+class NoteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Note
+        fields = ('id_note', 'description', 'date_publish', 'like_count', 'dislike_count')
 
+
+class ProfileNoteSerializer(serializers.ModelSerializer):
+   # posts = serializers.StringRelatedField(many=True)
+    notes = PostSerializer(many=True)
+    class Meta:
+        model = Note
+        fields = ['description', 'id_auth_user', 'notes']
+
+
+
+
+class RatingPostSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserPost
         fields = ('id_auth_user', 'id_post')

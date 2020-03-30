@@ -82,6 +82,7 @@ create table image
 
 create table likes
 (
+    id_like serial primary key,
 	id_auth_user integer references auth_user(id),
 	id_note   integer references note(id_note),
 	mark	  smallint
