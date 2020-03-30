@@ -67,9 +67,10 @@ class AuthViewSet(viewsets.ViewSet):  # класс предоставляющи�
                         status=HTTP_200_OK)
 
     @action(methods=['post'], detail=False, permission_classes=[IsAuthenticated])
-    def logout(self, request, pk=None):  # функция разлогинивания, т.е. удаление токена из бд
+    def logout(self, request):  # функция разлогинивания, т.е. удаление токена из бд
         # user = authenticate(request.data["username"], password=request.data["password"])
-        user_logout = Token.objects.get(key=request.data["token"])
+        print(request.data)
+        user_logout = Token.objects.get(key=request.data["Token"])
         print(user_logout)
         user_logout.delete()
         return Response(status=HTTP_200_OK)

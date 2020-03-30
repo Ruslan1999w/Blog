@@ -51,11 +51,11 @@ class RateViewSet(viewsets.ViewSet):
                                                   mark=request.data['mark'], id_post=Post.objects.get(id_post=request.data['post_id']))
             return Response(status=status.HTTP_201_CREATED)
 
-    def retrieve(self, request, pk=None):  # извлечение статьи по ее id
+    def retrieve(self, request, pk=None):  # извлечение оценки по id поста
         queryset = RatingPost.objects.get(id_post=pk)
         serializer = RatingPostSerializer(queryset, many=False)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-    def update(self, request, pk=None):
+    def update(self, request, pk=None):  # обновление оценки по id самой оценки
         queryset = RatingPost.objects.filter(id_rating_post=pk).update(mark=request.data['mark'])
         return Response(status=status.HTTP_200_OK)
