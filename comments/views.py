@@ -26,11 +26,13 @@ class NotesViewSet(viewsets.ViewSet):
         serializer = NoteSerializer(queryset, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
+    #Не работает
     def retrieve(self, request):  # Извлечение комментария по id
-        queryset = Note.objects.filter(id_auth_user=request.user.id)
-        print(queryset)
-        serializer = ProfileNoteSerializer(queryset, many=True)
-        print(serializer.data)
+
+        #queryset = Note.objects.filter(id_auth_user=request.user.id)
+        #print(queryset)
+        #serializer = ProfileNoteSerializer(queryset, many=True)
+        #print(serializer.data)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def update(self, request):  # Изменение коммента
