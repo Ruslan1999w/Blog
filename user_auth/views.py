@@ -1,12 +1,8 @@
 from django.contrib.auth import authenticate
-from django.views.decorators.csrf import csrf_exempt
-from pytz import unicode
 from rest_framework.decorators import permission_classes, action
 from rest_framework.status import HTTP_400_BAD_REQUEST, HTTP_404_NOT_FOUND, HTTP_200_OK
-import os
-from user_auth.serializers import *
+from data.serializers import *
 from rest_framework import viewsets, status
-from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
 from rest_framework.permissions import IsAdminUser, AllowAny, IsAuthenticated
 from django.contrib.auth.models import User
@@ -16,6 +12,7 @@ from data.serializers import *
 
 class UserViewSet(viewsets.ViewSet):  # класс предоставляющий возможности работы с пользователем: листинг всех
     # пользователей, извлечение определенного - по id или login, удаление пользователя
+    permission_classes = [IsAuthenticated]
 
     @action(methods=['get'], detail=False, permission_classes=[IsAdminUser])
     def users_list(self, request):  # функция вывода всех существующих пользователей
@@ -26,17 +23,15 @@ class UserViewSet(viewsets.ViewSet):  # класс предоставляющи�
         else:
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
-    @action(methods=['get'], detail=False)
-    def test(self, request):
-        print(permission_classes(IsAdminUser))
-        if permission_classes(IsAdminUser):
-            return Response({'token': "sd"}, status=status.HTTP_200_OK)
-        else:
-            return Response({"resp": "пошел на "})
+    def retrieve(self, request, pk=None):
+        queryset = User.objects.get(id=request.user.id)
+        serializer = UserSerializer(queryset, many=False)
+        return Response(serializer.data)
 
 
 class AuthViewSet(viewsets.ViewSet):  # класс предоставляющий методы авторизации, регистрации и окончания сессии
     # пользователя
+    permission_classes = [AllowAny]
 
     def create(self, request):  # метод создания пользователя
         serializer = UserSerializer(data=request.data)

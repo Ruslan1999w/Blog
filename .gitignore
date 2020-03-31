@@ -1,5 +1,6 @@
-articles/__pycache__/
-blog/__pycache__/
-data/__pycache__/
-user_auth/__pycache__/
+/articles/__pycache__/
+/blog/__pycache__/
+/data/__pycache__/
+/user_auth/__pycache__/
 myvenv
+/frontend/node_modules/

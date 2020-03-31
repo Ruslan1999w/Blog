@@ -5,7 +5,7 @@ from rest_framework.validators import UniqueValidator
 from django.contrib.auth.models import User
 
 
-class UserSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer):  # Сериалайзер для пользователя
     email = serializers.EmailField(
         required=True,
         validators=[UniqueValidator(queryset=User.objects.all())]
@@ -25,13 +25,13 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ('id', 'username', 'email', 'password')
 
 
-class NoteSerializer(serializers.ModelSerializer):
+class NoteSerializer(serializers.ModelSerializer):  # Сериалайзер для комментария
     class Meta:
         model = Note
         fields = ['description', 'date_publish', 'id_post']
 
 
-class PostSerializer(serializers.ModelSerializer):
+class PostSerializer(serializers.ModelSerializer):  # Сериалайзер для поста
 
     def create(self, validated_data):
         post = Post.objects.create(title=validated_data['title'], description=validated_data['description'],
@@ -42,7 +42,7 @@ class PostSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Post
-        fields = ('title', 'description', 'date_publish', 'like_count', 'dislike_count','posts')
+        fields = ('title', 'description', 'date_publish', 'like_count', 'dislike_count', 'posts')
 
 
 class UserPostSerializer(serializers.ModelSerializer):
@@ -66,13 +66,12 @@ class NoteSerializer(serializers.ModelSerializer):
 
 
 class ProfileNoteSerializer(serializers.ModelSerializer):
-   # posts = serializers.StringRelatedField(many=True)
+    # posts = serializers.StringRelatedField(many=True)
     notes = PostSerializer(many=True)
+
     class Meta:
         model = Note
         fields = ['description', 'id_auth_user', 'notes']
-
-
 
 
 class RatingPostSerializer(serializers.ModelSerializer):

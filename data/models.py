@@ -48,6 +48,7 @@ class AuthUser(models.Model):
     is_staff = models.BooleanField()
     is_active = models.BooleanField()
     date_joined = models.DateTimeField()
+    git_reference = models.CharField(max_length=250, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -147,6 +148,20 @@ class Image(models.Model):
         db_table = 'image'
 
 
+class Note(models.Model):
+    id_note = models.AutoField(primary_key=True)
+    id_auth_user = models.ForeignKey(AuthUser, models.DO_NOTHING, db_column='id_auth_user', blank=True, null=True)
+    id_post = models.ForeignKey('Post', models.DO_NOTHING, db_column='id_post', blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+    date_publish = models.DateTimeField(blank=True, null=True)
+    like_count = models.IntegerField(blank=True, null=True)
+    dislike_count = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'note'
+
+
 class Post(models.Model):
     id_post = models.AutoField(primary_key=True)
     id_category = models.ForeignKey(Category, models.DO_NOTHING, db_column='id_category', blank=True, null=True)
@@ -159,26 +174,6 @@ class Post(models.Model):
     class Meta:
         managed = False
         db_table = 'post'
-
-    def __str__(self):
-        return '%s' % self.title
-
-
-class Note(models.Model):
-    id_note = models.AutoField(primary_key=True)
-    id_auth_user = models.ForeignKey(AuthUser, models.DO_NOTHING, db_column='id_auth_user', blank=True, null=True)
-    id_post = models.ForeignKey(Post, related_name='posts', on_delete=models.CASCADE, db_column='id_post', blank=True, null=True)
-    description = models.TextField(blank=True, null=True)
-    date_publish = models.DateTimeField(blank=True, null=True)
-    like_count = models.IntegerField(blank=True, null=True)
-    dislike_count = models.IntegerField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'note'
-
-    def __str__(self):
-        return '%s: %s' % (self.description, self.date_publish)
 
 
 class PostTag(models.Model):
