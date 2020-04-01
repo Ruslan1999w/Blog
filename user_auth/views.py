@@ -69,3 +69,9 @@ class AuthViewSet(viewsets.ViewSet):  # класс предоставляющи�
         print(user_logout)
         user_logout.delete()
         return Response(status=HTTP_200_OK)
+
+    @action(methods=['get'], detail=False, permission_classes=[IsAuthenticated])  # Личный кабинет пользователя
+    def personal_account(self, request):
+        queryset = User.objects.get(id=request.user.id)
+        serializer = UserProfileSerializer(queryset, many=False)
+        return Response(serializer.data, status=status.HTTP_200_OK)

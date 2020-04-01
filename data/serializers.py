@@ -1,4 +1,5 @@
-from data.models import Post, UserPost, Note, Tag, PostTag, Category
+from rest_framework.validators import UniqueValidator
+from data.models import Post, UserPost, Note, Tag, PostTag, Category, AuthUser, RatingPost
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth.models import User
@@ -21,7 +22,7 @@ class UserSerializer(serializers.ModelSerializer):  # Сериалайзер д�
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'password')
+        fields = ('id', 'username', 'email', 'password')
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -50,21 +51,6 @@ class PostTagSerializer(serializers.ModelSerializer):
         fields = ['id_tag']
 
 
-class TagSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Tag
-        fields = ['id_tag', 'title']
-
-
-class PostTagSerializer(serializers.ModelSerializer):
-    tags = TagSerializer(many=False, read_only=True)
-
-    class Meta:
-    class Meta:
-        model = PostTag
-        fields = ['id_tag', 'tags']
-
-
 class PostSerializer(serializers.ModelSerializer):  # Сериалайзер для поста
 
     def create(self, validated_data):
@@ -78,7 +64,6 @@ class PostSerializer(serializers.ModelSerializer):  # Сериалайзер д�
 
     class Meta:
         model = Post
-        # fields = ('title', 'description', 'date_publish', 'like_count', 'dislike_count', 'posts','post_tag')
         fields = '__all__'
 
 
@@ -88,15 +73,18 @@ class UserPostSerializer(serializers.ModelSerializer):
         fields = ('id_auth_user', 'id_post')
 
 
-class ProfileNoteSerializer(serializers.ModelSerializer):
-    notes = PostSerializer(many=True)
-
-    class Meta:
-        model = Note
-        fields = ['description', 'id_auth_user', 'notes']
-
-
 class RatingPostSerializer(serializers.ModelSerializer):
     class Meta:
-        model = UserPost
-        fields = ('id_auth_user', 'id_post')
+        model = RatingPost
+        fields = '__all__'
+
+
+class UserProfileSerializer(serializers.ModelSerializer):  # Личный кабинет пользователя
+
+    users_note = NoteSerializer(many=True, read_only=False, required=False)
+    users_rate = RatingPostSerializer(many=True, read_only=True, required=False)
+
+    class Meta:
+        model = AuthUser
+        fields = ['last_login', 'is_superuser', 'username',
+                  'first_name', 'last_name', 'email', 'is_staff', 'is_active', 'date_joined', 'git_reference', 'users_note', 'users_rate']
