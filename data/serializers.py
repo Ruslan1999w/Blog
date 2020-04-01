@@ -1,5 +1,4 @@
-from rest_framework.validators import UniqueValidator
-from data.models import Post, UserPost, Note, PostTag, Tag
+from data.models import Post, UserPost, Note, Tag, PostTag, Category
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth.models import User
@@ -25,10 +24,30 @@ class UserSerializer(serializers.ModelSerializer):  # Сериалайзер д�
         fields = ('username', 'email', 'password')
 
 
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = '__all__'
+
+
 class NoteSerializer(serializers.ModelSerializer):  # Сериалайзер для комментария
     class Meta:
         model = Note
-        fields = ['description', 'date_publish', 'id_post']
+        fields = ['description', 'date_publish', 'id_auth_user', 'like_count', 'dislike_count']
+
+
+class TagSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tag
+        fields = '__all__'
+
+
+class PostTagSerializer(serializers.ModelSerializer):
+    id_tag = TagSerializer(many=False, required=True)
+
+    class Meta:
+        model = PostTag
+        fields = ['id_tag']
 
 
 class TagSerializer(serializers.ModelSerializer):
@@ -41,6 +60,7 @@ class PostTagSerializer(serializers.ModelSerializer):
     tags = TagSerializer(many=False, read_only=True)
 
     class Meta:
+    class Meta:
         model = PostTag
         fields = ['id_tag', 'tags']
 
@@ -52,12 +72,14 @@ class PostSerializer(serializers.ModelSerializer):  # Сериалайзер д�
                                    date_publish=validated_data['date_publish'])
         return post
 
-    notes = NoteSerializer(many=True, read_only=True)
-    post_tags = PostTagSerializer(many=True, read_only=True)
+    posts = NoteSerializer(many=True)
+    post_tag = PostTagSerializer(many=True, read_only=True, required=False)
+    id_category = CategorySerializer(many=False, required=False, read_only=True)
 
     class Meta:
         model = Post
-        fields = ('title', 'description', 'date_publish', 'like_count', 'dislike_count', 'notes', 'post_tags')
+        # fields = ('title', 'description', 'date_publish', 'like_count', 'dislike_count', 'posts','post_tag')
+        fields = '__all__'
 
 
 class UserPostSerializer(serializers.ModelSerializer):
