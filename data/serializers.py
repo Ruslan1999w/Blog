@@ -1,5 +1,5 @@
 from rest_framework.validators import UniqueValidator
-from data.models import Post, UserPost, Note, Tag, PostTag, Category
+from data.models import Post, UserPost, Note, Tag, PostTag, Category, AuthUser, RatingPost
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth.models import User
@@ -24,20 +24,24 @@ class UserSerializer(serializers.ModelSerializer):  # Сериалайзер д�
         model = User
         fields = ('id', 'username', 'email', 'password')
 
+
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = '__all__'
 
+
 class NoteSerializer(serializers.ModelSerializer):  # Сериалайзер для комментария
     class Meta:
         model = Note
-        fields = ['description', 'date_publish','id_auth_user','like_count','dislike_count']
+        fields = ['description', 'date_publish', 'id_auth_user', 'like_count', 'dislike_count']
+
 
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
         fields = '__all__'
+
 
 class PostTagSerializer(serializers.ModelSerializer):
     id_tag = TagSerializer(many=False, required=True)
@@ -45,7 +49,6 @@ class PostTagSerializer(serializers.ModelSerializer):
     class Meta:
         model = PostTag
         fields = ['id_tag']
-
 
 
 class PostSerializer(serializers.ModelSerializer):  # Сериалайзер для поста
@@ -58,41 +61,30 @@ class PostSerializer(serializers.ModelSerializer):  # Сериалайзер д�
     posts = NoteSerializer(many=True)
     post_tag = PostTagSerializer(many=True, read_only=True, required=False)
     id_category = CategorySerializer(many=False, required=False, read_only=True)
+
     class Meta:
         model = Post
-        #fields = ('title', 'description', 'date_publish', 'like_count', 'dislike_count', 'posts','post_tag')
-        fields='__all__'
+        fields = '__all__'
+
 
 class UserPostSerializer(serializers.ModelSerializer):
-
-    def create(self, validated_data):
-        # print("validated_data['id_post']  " + str(validated_data['id_post']))
-        # print("validated_data['id_auth_user']  " + str(validated_data['id_auth_user']))
-        print(validated_data)
-
-        return "user_post"
-
     class Meta:
         model = UserPost
         fields = ('id_auth_user', 'id_post')
-
-
-class NoteSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Note
-        fields = ('id_note', 'description', 'date_publish', 'like_count', 'dislike_count')
-
-
-class ProfileNoteSerializer(serializers.ModelSerializer):
-    # posts = serializers.StringRelatedField(many=True)
-    notes = PostSerializer(many=True)
-
-    class Meta:
-        model = Note
-        fields = ['description', 'id_auth_user', 'notes']
 
 
 class RatingPostSerializer(serializers.ModelSerializer):
     class Meta:
-        model = UserPost
-        fields = ('id_auth_user', 'id_post')
+        model = RatingPost
+        fields = '__all__'
+
+
+class UserProfileSerializer(serializers.ModelSerializer):  # Личный кабинет пользователя
+
+    users_note = NoteSerializer(many=True, read_only=False, required=False)
+    users_rate = RatingPostSerializer(many=True, read_only=True, required=False)
+
+    class Meta:
+        model = AuthUser
+        fields = ['last_login', 'is_superuser', 'username',
+                  'first_name', 'last_name', 'email', 'is_staff', 'is_active', 'date_joined', 'git_reference', 'users_note', 'users_rate']

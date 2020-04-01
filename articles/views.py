@@ -3,7 +3,7 @@ from data.serializers import *
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAdminUser, AllowAny, IsAuthenticated
-from data.models import AuthUser, Post, UserPost, RatingPost
+from data.models import AuthUser, Post, UserPost, RatingPost, PostTag, Tag
 
 
 class ArticlesViewSet(viewsets.ViewSet):
@@ -15,15 +15,11 @@ class ArticlesViewSet(viewsets.ViewSet):
         serializer = PostSerializer(queryset, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-    @action(methods=['post'], detail=False, permission_classes=[IsAdminUser])
+    @action(methods=['post'], detail=False, permission_classes=[IsAdminUser])  # Создание статьи
     def article_create(self, request):  # создание статьи
         serializer = PostSerializer(data=request.data)
         if serializer.is_valid():
-            print('ERORRRRRRROROOROROOR')
             post = serializer.save()
-            print('ERORRRRRRROROOROROOR')
-            print("post number " + str(post.id_post))
-            print("user number " + str(request.user.id))
             auth_user = AuthUser.objects.get(id=request.user.id)
             post_id = Post.objects.get(id_post=post.id_post)
             user_post = UserPost.objects.create(id_auth_user=auth_user,
@@ -47,9 +43,10 @@ class RateViewSet(viewsets.ViewSet):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def create(self, request):  # создание оценки, не проверяет оставлял ли данный пользователь уже оценку или нет
-            user_post = RatingPost.objects.create(id_auth_user=AuthUser.objects.get(id=request.user.id),
-                                                  mark=request.data['mark'], id_post=Post.objects.get(id_post=request.data['post_id']))
-            return Response(status=status.HTTP_201_CREATED)
+        user_post = RatingPost.objects.create(id_auth_user=AuthUser.objects.get(id=request.user.id),
+                                              mark=request.data['mark'],
+                                              id_post=Post.objects.get(id_post=request.data['post_id']))
+        return Response(status=status.HTTP_201_CREATED)
 
     def retrieve(self, request, pk=None):  # извлечение оценки по id поста
         queryset = RatingPost.objects.get(id_post=pk)

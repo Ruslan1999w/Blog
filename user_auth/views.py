@@ -24,7 +24,7 @@ class UserViewSet(viewsets.ViewSet):  # класс предоставляющи�
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
     def retrieve(self, request, pk=None):
-        queryset = User.objects.get(id=request.user.id)
+        queryset = User.objects.get(id=pk)
         serializer = UserSerializer(queryset, many=False)
         return Response(serializer.data)
 
@@ -69,3 +69,9 @@ class AuthViewSet(viewsets.ViewSet):  # класс предоставляющи�
         print(user_logout)
         user_logout.delete()
         return Response(status=HTTP_200_OK)
+
+    @action(methods=['get'], detail=False, permission_classes=[IsAuthenticated])  # Личный кабинет пользователя
+    def personal_account(self, request):
+        queryset = User.objects.get(id=request.user.id)
+        serializer = UserProfileSerializer(queryset, many=False)
+        return Response(serializer.data, status=status.HTTP_200_OK)

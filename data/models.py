@@ -166,7 +166,7 @@ class Post(models.Model):
 
 class Note(models.Model):
     id_note = models.AutoField(primary_key=True)
-    id_auth_user = models.ForeignKey(AuthUser, models.DO_NOTHING, db_column='id_auth_user', blank=True, null=True)
+    id_auth_user = models.ForeignKey(AuthUser, related_name='users_note', on_delete=models.CASCADE, db_column='id_auth_user', blank=True, null=True)
     id_post = models.ForeignKey(Post, related_name='posts', on_delete=models.CASCADE, db_column='id_post', blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     date_publish = models.DateTimeField(blank=True, null=True)
@@ -195,7 +195,7 @@ class PostTag(models.Model):
 
 class RatingPost(models.Model):
     id_post = models.ForeignKey(Post, models.DO_NOTHING, db_column='id_post', blank=True, null=True)
-    id_auth_user = models.ForeignKey(AuthUser, models.DO_NOTHING, db_column='id_auth_user', blank=True, null=True)
+    id_auth_user = models.ForeignKey(AuthUser, related_name='users_rate', on_delete=models.CASCADE, db_column='id_auth_user', blank=True, null=True)
     mark = models.SmallIntegerField(blank=True, null=True)
     id_rating_post = models.AutoField(primary_key=True)
 
@@ -211,6 +211,9 @@ class Tag(models.Model):
     class Meta:
         managed = False
         db_table = 'tag'
+
+    def __str__(self):
+        return '%s' % (self.id_tag, self.title)
 
 
 class UserPost(models.Model):
