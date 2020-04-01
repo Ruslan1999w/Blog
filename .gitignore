@@ -1,6 +1,5 @@
-/articles/__pycache__/
-/blog/__pycache__/
-/data/__pycache__/
-/user_auth/__pycache__/
+__pychache__/
+.idea/
 myvenv
 /frontend/node_modules/
+.pyc

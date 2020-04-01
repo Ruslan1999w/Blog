@@ -178,14 +178,14 @@ class Note(models.Model):
         db_table = 'note'
 
     def __str__(self):
-        return '%s: %s' % (self.description, self.date_publish)
+        return self.description, self.date_publish, self.id_auth_user, self.dislike_count, self.like_count
 
 
 
 
 class PostTag(models.Model):
-    id_post = models.ForeignKey(Post, models.DO_NOTHING, db_column='id_post', blank=True, null=True)
-    id_tag = models.ForeignKey('Tag', models.DO_NOTHING, db_column='id_tag', blank=True, null=True)
+    id_post = models.ForeignKey(Post,related_name='post_tag', on_delete=models.CASCADE, db_column='id_post', blank=True, null=True)
+    id_tag = models.ForeignKey('Tag',related_name='tags', on_delete=models.CASCADE, db_column='id_tag', blank=True, null=True)
     id_post_tag = models.AutoField(primary_key=True)
 
     class Meta:
