@@ -167,7 +167,7 @@ class Post(models.Model):
 class Note(models.Model):
     id_note = models.AutoField(primary_key=True)
     id_auth_user = models.ForeignKey(AuthUser, models.DO_NOTHING, db_column='id_auth_user', blank=True, null=True)
-    id_post = models.ForeignKey(Post, related_name='posts', on_delete=models.CASCADE, db_column='id_post', blank=True, null=True)
+    id_post = models.ForeignKey(Post, related_name='notes', on_delete=models.CASCADE, db_column='id_post', blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     date_publish = models.DateTimeField(blank=True, null=True)
     like_count = models.IntegerField(blank=True, null=True)
@@ -184,13 +184,16 @@ class Note(models.Model):
 
 
 class PostTag(models.Model):
-    id_post = models.ForeignKey(Post, models.DO_NOTHING, db_column='id_post', blank=True, null=True)
-    id_tag = models.ForeignKey('Tag', models.DO_NOTHING, db_column='id_tag', blank=True, null=True)
+    id_post = models.ForeignKey(Post, related_name='post_tags', on_delete=models.CASCADE, db_column='id_post', blank=True, null=True)
+    id_tag = models.ForeignKey('Tag', related_name='tags', on_delete=models.CASCADE, db_column='id_tag', blank=True, null=True)
     id_post_tag = models.AutoField(primary_key=True)
 
     class Meta:
         managed = False
         db_table = 'post_tag'
+
+    def __str__(self):
+        return '%s' % (self.id_post, self.id_tag)
 
 
 class RatingPost(models.Model):
@@ -211,6 +214,9 @@ class Tag(models.Model):
     class Meta:
         managed = False
         db_table = 'tag'
+
+    def __str__(self):
+        return '%s' % (self.id_tag, self.title)
 
 
 class UserPost(models.Model):

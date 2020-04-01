@@ -24,7 +24,7 @@ class UserViewSet(viewsets.ViewSet):  # класс предоставляющи�
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
     def retrieve(self, request, pk=None):
-        queryset = User.objects.get(id=request.user.id)
+        queryset = User.objects.get(id=pk)
         serializer = UserSerializer(queryset, many=False)
         return Response(serializer.data)
 

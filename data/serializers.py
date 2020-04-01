@@ -1,5 +1,5 @@
 from rest_framework.validators import UniqueValidator
-from data.models import Post, UserPost, Note
+from data.models import Post, UserPost, Note, PostTag, Tag
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth.models import User
@@ -22,13 +22,27 @@ class UserSerializer(serializers.ModelSerializer):  # Сериалайзер д�
 
     class Meta:
         model = User
-        fields = ('id', 'username', 'email', 'password')
+        fields = ('username', 'email', 'password')
 
 
 class NoteSerializer(serializers.ModelSerializer):  # Сериалайзер для комментария
     class Meta:
         model = Note
         fields = ['description', 'date_publish', 'id_post']
+
+
+class TagSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tag
+        fields = ['id_tag', 'title']
+
+
+class PostTagSerializer(serializers.ModelSerializer):
+    tags = TagSerializer(many=False, read_only=True)
+
+    class Meta:
+        model = PostTag
+        fields = ['id_tag', 'tags']
 
 
 class PostSerializer(serializers.ModelSerializer):  # Сериалайзер для поста
@@ -38,35 +52,21 @@ class PostSerializer(serializers.ModelSerializer):  # Сериалайзер д�
                                    date_publish=validated_data['date_publish'])
         return post
 
-    posts = NoteSerializer(many=True)
+    notes = NoteSerializer(many=True, read_only=True)
+    post_tags = PostTagSerializer(many=True, read_only=True)
 
     class Meta:
         model = Post
-        fields = ('title', 'description', 'date_publish', 'like_count', 'dislike_count', 'posts')
+        fields = ('title', 'description', 'date_publish', 'like_count', 'dislike_count', 'notes', 'post_tags')
 
 
 class UserPostSerializer(serializers.ModelSerializer):
-
-    def create(self, validated_data):
-        # print("validated_data['id_post']  " + str(validated_data['id_post']))
-        # print("validated_data['id_auth_user']  " + str(validated_data['id_auth_user']))
-        print(validated_data)
-
-        return "user_post"
-
     class Meta:
         model = UserPost
         fields = ('id_auth_user', 'id_post')
 
 
-class NoteSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Note
-        fields = ('id_note', 'description', 'date_publish', 'like_count', 'dislike_count')
-
-
 class ProfileNoteSerializer(serializers.ModelSerializer):
-    # posts = serializers.StringRelatedField(many=True)
     notes = PostSerializer(many=True)
 
     class Meta:
