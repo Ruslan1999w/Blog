@@ -1,5 +1,5 @@
 from rest_framework.validators import UniqueValidator
-from data.models import Post, UserPost, Note, Tag, PostTag, Category, AuthUser, RatingPost
+from data.models import Post, UserPost, Note, Tag, PostTag, Category, AuthUser, RatingPost, Image
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth.models import User
@@ -23,8 +23,7 @@ class UserSerializer(serializers.ModelSerializer):  # Сериалайзер д�
     class Meta:
         model = AuthUser
         fields = ['last_login', 'is_superuser', 'username',
-                  'first_name', 'last_name', 'email', 'is_staff', 'is_active', 'date_joined', 'git_reference',
-                  'users_note', 'users_rate']
+                  'first_name', 'last_name', 'email', 'is_staff', 'is_active', 'date_joined', 'git_reference', 'password']
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -34,11 +33,11 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class NoteSerializer(serializers.ModelSerializer):  # Сериалайзер для комментария
-    users_note = UserSerializer(many=False, read_only=True)
+    id_post = CategorySerializer(many=False)
 
     class Meta:
         model = Note
-        fields = ['description', 'date_publish', 'users_note', 'like_count', 'dislike_count']
+        fields = '__all__'
 
 
 class RatingPostSerializer(serializers.ModelSerializer):
@@ -62,6 +61,14 @@ class PostTagSerializer(serializers.ModelSerializer):
 
 
 class UserPostSerializer(serializers.ModelSerializer):
+    id_auth_user = UserSerializer(many=False)
+
     class Meta:
         model = UserPost
-        fields = ('id_auth_user', 'id_post',)
+        fields = ['id_auth_user']
+
+
+class ImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Image
+        fields = ['path_to_image']

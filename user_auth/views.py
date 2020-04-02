@@ -2,6 +2,7 @@ from django.contrib.auth import authenticate
 from rest_framework.decorators import permission_classes, action
 from rest_framework.status import HTTP_400_BAD_REQUEST, HTTP_404_NOT_FOUND, HTTP_200_OK
 from data.serializers import *
+from data.models import AuthUser
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAdminUser, AllowAny, IsAuthenticated
@@ -63,15 +64,12 @@ class AuthViewSet(viewsets.ViewSet):  # класс предоставляющи�
 
     @action(methods=['post'], detail=False, permission_classes=[IsAuthenticated])
     def logout(self, request):  # функция разлогинивания, т.е. удаление токена из бд
-        # user = authenticate(request.data["username"], password=request.data["password"])
-        print(request.data)
         user_logout = Token.objects.get(key=request.data["Token"])
-        print(user_logout)
         user_logout.delete()
         return Response(status=HTTP_200_OK)
 
     @action(methods=['get'], detail=False, permission_classes=[IsAuthenticated])  # Личный кабинет пользователя
     def personal_account(self, request):
-        queryset = User.objects.get(id=request.user.id)
+        queryset = AuthUser.objects.get(id=request.user.id)
         serializer = UserProfileSerializer(queryset, many=False)
         return Response(serializer.data, status=status.HTTP_200_OK)
