@@ -54,6 +54,9 @@ class AuthUser(models.Model):
         managed = False
         db_table = 'auth_user'
 
+    def __str__(self):
+        return '%s' % self.username
+
 
 class AuthUserGroups(models.Model):
     user = models.ForeignKey(AuthUser, models.DO_NOTHING)
@@ -166,8 +169,8 @@ class Post(models.Model):
 
 class Note(models.Model):
     id_note = models.AutoField(primary_key=True)
-    id_auth_user = models.ForeignKey(AuthUser, related_name='users_note', on_delete=models.CASCADE, db_column='id_auth_user', blank=True, null=True)
-    id_post = models.ForeignKey(Post, related_name='posts', on_delete=models.CASCADE, db_column='id_post', blank=True, null=True)
+    id_auth_user = models.ForeignKey(AuthUser, related_name='auth_user', on_delete=models.CASCADE, db_column='id_auth_user', blank=True, null=True)
+    id_post = models.ForeignKey(Post, related_name='notes', on_delete=models.CASCADE, db_column='id_post', blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     date_publish = models.DateTimeField(blank=True, null=True)
     like_count = models.IntegerField(blank=True, null=True)
@@ -217,7 +220,7 @@ class Tag(models.Model):
 
 
 class UserPost(models.Model):
-    id_auth_user = models.ForeignKey(AuthUser, models.DO_NOTHING, db_column='id_auth_user', blank=True, null=True)
+    id_auth_user = models.ForeignKey(AuthUser, related_name='users', on_delete=models.CASCADE, db_column='id_auth_user', blank=True, null=True)
     id_post = models.ForeignKey(Post, models.DO_NOTHING, db_column='id_post', blank=True, null=True)
     id_user_post = models.AutoField(primary_key=True)
 

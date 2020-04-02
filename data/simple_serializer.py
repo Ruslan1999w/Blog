@@ -34,11 +34,11 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class NoteSerializer(serializers.ModelSerializer):  # Сериалайзер для комментария
-    users_note = UserSerializer(many=False, read_only=True)
+    id_post = CategorySerializer(many=False)
 
     class Meta:
         model = Note
-        fields = ['description', 'date_publish', 'users_note', 'like_count', 'dislike_count']
+        fields = '__all__'
 
 
 class RatingPostSerializer(serializers.ModelSerializer):
@@ -64,4 +64,4 @@ class PostTagSerializer(serializers.ModelSerializer):
 class UserPostSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserPost
-        fields = ('id_auth_user', 'id_post',)
+        fields = '__all__'
