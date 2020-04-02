@@ -24,7 +24,8 @@ class PostSerializer(serializers.ModelSerializer):  # Сериалайзер д�
     notes = NoteSerializer(many=True)
     post_tag = PostTagSerializer(many=True, read_only=True, required=False)
     id_category = CategorySerializer(many=False, required=False, read_only=True)
-    users = UserPostSerializer(many=True, required=False)
+    post_creator = UserPostSerializer(many=True)
+    images = ImageSerializer(many=True)
 
     class Meta:
         model = Post

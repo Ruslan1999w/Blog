@@ -143,7 +143,7 @@ class DjangoSession(models.Model):
 
 class Image(models.Model):
     id_image = models.AutoField(primary_key=True)
-    id_post = models.ForeignKey('Post', models.DO_NOTHING, db_column='id_post', blank=True, null=True)
+    id_post = models.ForeignKey('Post', related_name='images', on_delete=models.CASCADE, db_column='id_post', blank=True, null=True)
     path_to_image = models.CharField(max_length=256, blank=True, null=True)
 
     class Meta:
@@ -221,7 +221,7 @@ class Tag(models.Model):
 
 class UserPost(models.Model):
     id_auth_user = models.ForeignKey(AuthUser, related_name='users', on_delete=models.CASCADE, db_column='id_auth_user', blank=True, null=True)
-    id_post = models.ForeignKey(Post, models.DO_NOTHING, db_column='id_post', blank=True, null=True)
+    id_post = models.ForeignKey(Post, related_name='post_creator', on_delete=models.CASCADE, db_column='id_post', blank=True, null=True)
     id_user_post = models.AutoField(primary_key=True)
 
     class Meta:
