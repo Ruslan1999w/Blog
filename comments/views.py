@@ -1,5 +1,6 @@
 from rest_framework.decorators import action
 from data.serializers import *
+from data.simple_serializer import *
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAdminUser, AllowAny, IsAuthenticated
@@ -26,13 +27,9 @@ class NotesViewSet(viewsets.ViewSet):
         serializer = NoteSerializer(queryset, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-    #Не работает
-    def retrieve(self, request):  # Извлечение комментария по id
-
-        #queryset = Note.objects.filter(id_auth_user=request.user.id)
-        #print(queryset)
-        #serializer = ProfileNoteSerializer(queryset, many=True)
-        #print(serializer.data)
+    def retrieve(self, request, pk=None):  # Извлечение комментария по id
+        queryset = Note.objects.filter(id_auth_user=request.user.id)
+        serializer = NoteSerializer(queryset, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def update(self, request):  # Изменение коммента
