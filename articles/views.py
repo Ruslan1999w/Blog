@@ -3,7 +3,7 @@ from data.serializers import *
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAdminUser, AllowAny, IsAuthenticated
-from data.models import AuthUser, Post, UserPost, RatingPost, PostTag, Tag
+from data.models import AuthUser, Post, UserPost, RatingPost, PostTag, Tag, Image
 
 
 class ArticlesViewSet(viewsets.ViewSet):
@@ -27,6 +27,11 @@ class ArticlesViewSet(viewsets.ViewSet):
 
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(status=status.HTTP_400_BAD_REQUEST)
+
+    @action(detail=True, methods=['post'], permission_classes=[IsAdminUser])  # Создание статьи
+    def image_adding(self, request, pk=None):  # создание статьи
+        Image.objects.create(id_post=Post.objects.get(id_post=pk), path_to_image=request.data['image'])
+        return Response(status=status.HTTP_201_CREATED)
 
     def retrieve(self, request, pk=None):  # извлечение статьи по ее id
         queryset = Post.objects.get(id_post=pk)
