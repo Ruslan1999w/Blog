@@ -31,8 +31,7 @@ create table post
 	title				varchar(256),
 	description         text,
 	date_publish		timestamp,
-	like_count			integer default 0,
-	dislike_count       integer default 0
+	rate				real
 );
 
 
@@ -85,7 +84,7 @@ create table likes
     id_like serial primary key,
 	id_auth_user integer references auth_user(id),
 	id_note   integer references note(id_note),
-	mark	  smallint
+	mark	  boolean
 );
 
 

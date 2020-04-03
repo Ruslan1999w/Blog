@@ -156,8 +156,7 @@ class Post(models.Model):
     title = models.CharField(max_length=256, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     date_publish = models.DateTimeField(blank=True, null=True)
-    like_count = models.IntegerField(blank=True, null=True)
-    dislike_count = models.IntegerField(blank=True, null=True)
+    rate = models.DecimalField(max_digits=4, decimal_places=2, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -227,3 +226,17 @@ class UserPost(models.Model):
     class Meta:
         managed = False
         db_table = 'user_post'
+
+
+class Likes(models.Model):
+    id_like = models.AutoField(primary_key=True)
+    id_auth_user = models.ForeignKey(AuthUser, models.DO_NOTHING, db_column='id_auth_user', blank=True, null=True)
+    id_note = models.ForeignKey('Note', models.DO_NOTHING, db_column='id_note', blank=True, null=True)
+    mark = models.BooleanField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'likes'
+
+
+
