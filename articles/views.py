@@ -68,7 +68,7 @@ class RateViewSet(viewsets.ViewSet):
     def create(self, request):  # создание оценки, не проверяет оставлял ли данный пользователь уже оценку или нет
         user_post = RatingPost.objects.create(id_auth_user=AuthUser.objects.get(id=request.user.id),
                                               mark=request.data['mark'],
-                                              id_post=Post.objects.get(id_post=request.data['post_id']))
+                                              id_post=Post.objects.get(id_post=request.data['id_post']))
         return Response(status=status.HTTP_201_CREATED)
 
     def retrieve(self, request, pk=None):  # извлечение оценки по id поста
