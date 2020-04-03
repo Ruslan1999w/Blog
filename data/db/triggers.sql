@@ -1,7 +1,40 @@
 
+--Удаление триггеров(для тестов)
+drop trigger if exists calculate_rate on rating_post;
+drop function calc_rate();
+--Функция триггера перерасчета рейтинга статьи
+create or replace function calc_rate() returns trigger as
+	$$
+		declare
+			--Рассчитанный рейтинг
+			new_rate real;
+			--Количество оценок
+			counts_rate integer;
+			--Сумма оценок
+			sum_rate integer;
+		begin
+			if TG_OP = 'INSERT' or TG_OP = 'UPDATE' then
+				select into counts_rate count(mark) from rating_post where id_post = new.id_post;
+				select into sum_rate sum(mark) from rating_post where id_post = new.id_post;
+				new_rate= sum_rate::real/counts_rate::real;
+				update post set rate = new_rate where id_post = new.id_post;
+			elsif TG_OP = 'DELETE' then
+				select into counts_rate count(mark) from rating_post where id_post = old.id_post;
+				select into sum_rate sum(mark) from rating_post where id_post = old.id_post;
+				new_rate= sum_rate::real/counts_rate::real;
+				update post set rate = new_rate where id_post = old.id_post;
+			end if;
+			return null;
+		end;
+	$$language plpgsql;
 
+--Триггер перерасчета рейтинга статьи
+create trigger calculate_rate
+	after insert or update or delete on rating_post
+	for each row 
+	execute procedure calc_rate();
 
-
+--Удаление триггера(для тестов)
 drop trigger if exists increment_like on likes ;
 drop function increment_note_like();
 --Функия триггерв
