@@ -11,7 +11,6 @@ class NotesViewSet(viewsets.ViewSet):
     permission_classes = [IsAuthenticated]
 
     def create(self, request):  # Создание комментария
-        print(request.data)
         serializer = NoteSerializer(data=request.data)
         if serializer.is_valid():
             auth_user = AuthUser.objects.get(id=request.user.id)

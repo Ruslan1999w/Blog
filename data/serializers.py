@@ -16,11 +16,6 @@ class UserProfileSerializer(serializers.ModelSerializer):  # Личный каб
 
 class PostSerializer(serializers.ModelSerializer):  # Сериалайзер для поста
 
-    def create(self, validated_data):
-        post = Post.objects.create(title=validated_data['title'], description=validated_data['description'],
-                                   date_publish=validated_data['date_publish'])
-        return post
-
     notes = NoteSerializer(many=True)
     post_tag = PostTagSerializer(many=True, read_only=True, required=False)
     id_category = CategorySerializer(many=False, required=False, read_only=True)

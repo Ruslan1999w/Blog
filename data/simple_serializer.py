@@ -23,7 +23,8 @@ class UserSerializer(serializers.ModelSerializer):  # Сериалайзер д�
     class Meta:
         model = AuthUser
         fields = ['last_login', 'is_superuser', 'username',
-                  'first_name', 'last_name', 'email', 'is_staff', 'is_active', 'date_joined', 'git_reference', 'password']
+                  'first_name', 'last_name', 'email', 'is_staff', 'is_active', 'date_joined', 'git_reference',
+                  'password']
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -37,12 +38,6 @@ class NoteSerializer(serializers.ModelSerializer):  # Сериалайзер д�
 
     class Meta:
         model = Note
-        fields = '__all__'
-
-
-class RatingPostSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = RatingPost
         fields = '__all__'
 
 
@@ -72,3 +67,33 @@ class ImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Image
         fields = ['path_to_image']
+
+
+class SimplePostSerializer(serializers.ModelSerializer):  # Сериалайзер для поста
+
+    def create(self, validated_data):
+        post = Post.objects.create(title=validated_data['title'], description=validated_data['description'],
+                                   date_publish=validated_data['date_publish'])
+        return post
+
+    def update(self, instance, validated_data):
+        instance.title = validated_data.get('title')
+        instance.description = validated_data.get('description')
+        instance.save()
+        return instance
+
+    class Meta:
+        model = Post
+        fields = '__all__'
+
+
+class RatingPostSerializer(serializers.ModelSerializer):
+    def update(self, instance, validated_data):
+        print(instance.mark)
+        instance.mark = validated_data.get('mark')
+        instance.save()
+        return instance
+
+    class Meta:
+        model = RatingPost
+        fields = '__all__'
