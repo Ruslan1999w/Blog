@@ -34,7 +34,7 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class NoteSerializer(serializers.ModelSerializer):  # Сериалайзер для комментария
-    id_post = CategorySerializer(many=False)
+    id_post = CategorySerializer(many=False, required=False)
 
     class Meta:
         model = Note

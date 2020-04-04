@@ -2,6 +2,7 @@ from django.contrib.auth import authenticate
 from rest_framework.decorators import permission_classes, action
 from rest_framework.status import HTTP_400_BAD_REQUEST, HTTP_404_NOT_FOUND, HTTP_200_OK
 from data.serializers import *
+from data.simple_serializer import *
 from data.models import AuthUser
 from rest_framework import viewsets, status
 from rest_framework.response import Response

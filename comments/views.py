@@ -19,6 +19,7 @@ class NotesViewSet(viewsets.ViewSet):
                                 id_auth_user=auth_user,
                                 description=request.data['description'])
             return Response(serializer.data, status=status.HTTP_201_CREATED)
+        print(serializer.errors)
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
     def list(self, request):  # листинг всех комментов под постом
@@ -31,7 +32,7 @@ class NotesViewSet(viewsets.ViewSet):
         serializer = NoteSerializer(queryset, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-    def update(self, request):  # Изменение коммента
+    def update(self, request, pk=None):  # Изменение коммента
         queryset = Note.objects.get(id_note=request.data['id_note'])
         queryset.description = request.data['description']
         queryset.save()
