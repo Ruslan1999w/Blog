@@ -4,8 +4,8 @@ from data.simple_serializer import *
 
 class UserProfileSerializer(serializers.ModelSerializer):  # Личный кабинет пользователя
 
-    auth_user = NoteSerializer(many=True)
-    users_rate = RatingPostSerializer(many=True)
+    auth_user = NoteSerializer(many=True, required=False)
+    users_rate = RatingPostSerializer(many=True, required=False)
 
     class Meta:
         model = AuthUser
