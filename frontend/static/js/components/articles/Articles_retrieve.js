@@ -1,21 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./comp_style/style.scss";
 
 class Articles_retrieve extends React.Component {
   state = {
     error: false,
     isLoading: false,
-    items: []
+    items: [],
   };
   componentDidMount() {
     fetch("http://127.0.0.1:8000/articles/" + this.props.pk, {
-      method: "GET"
+      method: "GET",
     })
-      .then(response => {
+      .then((response) => {
         return response.json();
       })
-      .then(data => {
+      .then((data) => {
         this.setState({ isLoading: true, items: data });
         console.log(this);
       });
