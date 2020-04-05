@@ -26,12 +26,8 @@ class Articles_list extends React.Component {
         {items.map((item) => (
           <div class="book">
             <div class="left">
-              <Route
-                path="/articles/:number"
-                render={() => <Articles_retrieve pk={item.id_post} />}
-              />
               <h1>
-                <Link to={`/articles/${item.id_post}`}>{item.title}</Link>
+                <Link to={`/article/${item.id_post}`}>{item.title}</Link>
               </h1>
             </div>
             <div class="right">
