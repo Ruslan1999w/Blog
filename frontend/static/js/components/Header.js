@@ -1,19 +1,16 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { Route, Link } from "react-router-dom";
 import "./comp_style/style.scss";
 import LoginForm from "./LogIn";
 import LogOutForm from "./LogOut";
+import Articles_list from "./articles/Articles_list";
 class Header extends React.Component {
   render() {
     return (
       <div class="header">
         <LogOutForm />
         <LoginForm />
-        <ul>
-          <li>Logo</li>
-          <li>Login</li>
-          <li>library</li>
-        </ul>
+        <Link to="/article">Home</Link>
       </div>
     );
   }
