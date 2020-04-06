@@ -49,13 +49,11 @@ class AuthUser(models.Model):
     is_active = models.BooleanField()
     date_joined = models.DateTimeField()
     git_reference = models.CharField(max_length=250, blank=True, null=True)
+    avatar = models.CharField(max_length=256, blank=True, null=True)
 
     class Meta:
         managed = False
         db_table = 'auth_user'
-
-    def __str__(self):
-        return '%s' % self.username
 
 
 class AuthUserGroups(models.Model):
@@ -237,6 +235,3 @@ class Likes(models.Model):
     class Meta:
         managed = False
         db_table = 'likes'
-
-
-
