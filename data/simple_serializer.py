@@ -32,18 +32,19 @@ class CategorySerializer(serializers.ModelSerializer):
         model = Category
         fields = '__all__'
 
+
 class PostForNoteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
-        fields =('title','rate','description','id_post')
+        fields = ('title', 'rate', 'description', 'id_post')
+
 
 class NoteSerializer(serializers.ModelSerializer):  # Сериалайзер для комментария
-    id_post = PostForNoteSerializer(many=False,required=True)
+    id_post = PostForNoteSerializer(many=False, required=False)
+
     class Meta:
         model = Note
         fields = '__all__'
-
-
 
 
 class TagSerializer(serializers.ModelSerializer):

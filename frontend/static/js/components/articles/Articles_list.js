@@ -16,7 +16,6 @@ class Articles_list extends React.Component {
       })
       .then((data) => {
         this.setState({ isLoading: true, items: data });
-        console.log(this);
       });
   }
   render() {
