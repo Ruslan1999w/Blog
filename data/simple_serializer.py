@@ -93,9 +93,9 @@ class SimplePostSerializer(serializers.ModelSerializer):  # Сериалайзе
 
 
 class RatingPostSerializer(serializers.ModelSerializer):
-    id_post = PostForNoteSerializer(many=False,required=True)
+    id_post = PostForNoteSerializer(many=False, required=True)
+
     def update(self, instance, validated_data):
-        print(instance.mark)
         instance.mark = validated_data.get('mark')
         instance.save()
         return instance
