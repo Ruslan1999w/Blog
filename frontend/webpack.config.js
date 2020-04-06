@@ -8,7 +8,7 @@ module.exports = {
 
   output: {
     path: path.join(__dirname, "/static/js"),
-    filename: "[name].js"
+    filename: "[name].js",
   },
 
   module: {
@@ -16,23 +16,26 @@ module.exports = {
       {
         test: /\.jsx?$/,
         loader: "babel-loader",
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
       {
         test: /\.s[ac]ss$/i,
-        use: ["style-loader", "css-loader", "sass-loader"]
-      }
-    ]
+        use: ["style-loader", "css-loader", "sass-loader"],
+      },
+    ],
   },
 
   plugins: [
     new BundleTracker({
       path: __dirname,
-      filename: "webpack-stats.json"
-    })
+      filename: "webpack-stats.json",
+    }),
+    new HtmlWebpackPlugin({
+      template: "./static/js/index.html",
+    }),
   ],
 
   optimization: {
-    minimize: true
-  }
+    minimize: true,
+  },
 };
