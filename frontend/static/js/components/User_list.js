@@ -1,8 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./comp_style/style.scss";
+import User_retrieve from "./User_retrieve";
+import { Route, BrowserRouter, Link } from "react-router-dom";
 
-class Articles_list extends React.Component {
+
+class User_list extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -12,11 +15,8 @@ class Articles_list extends React.Component {
     items: []
   };
   componentDidMount() {
-    fetch("http://127.0.0.1:8000/users/users_list", {
-      headers: {
-        Authorization: "Token " + this.props.permission
-      }
-    })
+
+    fetch("http://127.0.0.1:8000/users/users_list/")
       .then(response => {
         return response.json();
       })
@@ -32,9 +32,10 @@ class Articles_list extends React.Component {
         {items.map(item => (
           <div class="user_list">
             <div class="user">
-              <p>{item.username}</p>
-              <p> {item.email}</p>
-              <br></br>
+                <Link to={`/users/${item.id}`}>{item.username}</Link>
+                {item.date_joined}
+                <h1>{item.id}</h1>
+
             </div>
           </div>
         ))}
@@ -42,4 +43,7 @@ class Articles_list extends React.Component {
     );
   }
 }
-export default Articles_list;
+
+
+
+export default User_list;

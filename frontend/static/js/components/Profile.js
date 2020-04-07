@@ -18,7 +18,7 @@ class Profile extends React.Component {
   componentDidMount() {
     fetch("http://127.0.0.1:8000/auth/personal_account", {
       headers: {
-        Authorization: "Token 9a4378dd6e025967e0c606b3bcbe4780070637f1",
+        Authorization: "Token b45a1c84dfeca666c2f3cd2b728386c0fb74013c",
         method: "GET",
       },
     })

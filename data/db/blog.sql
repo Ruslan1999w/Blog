@@ -11,6 +11,7 @@ drop table if exists post;
 drop table if exists person;
 drop table if exists category;
 
+ALTER TABLE public.auth_user ADD avatar varchar(256) NULL;
 
 create table category
 (

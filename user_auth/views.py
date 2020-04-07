@@ -14,16 +14,16 @@ from data.serializers import *
 
 class UserViewSet(viewsets.ViewSet):  # класс предоставляющий возможности работы с пользователем: листинг всех
     # пользователей, извлечение определенного - по id или login, удаление пользователя
-    permission_classes = [IsAuthenticated]
-
-    @action(methods=['get'], detail=False, permission_classes=[IsAdminUser])
+    #permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
+    @action(methods=['get'], detail=False, permission_classes=[AllowAny])
     def users_list(self, request):  # функция вывода всех существующих пользователей
-        if permission_classes:
-            queryset = User.objects.all()
-            serializer = UserSerializer(queryset, many=True)
-            return Response(serializer.data)
-        else:
-            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+        queryset = User.objects.all()
+        serializer = UserSerializer(queryset, many=True)
+        return Response(serializer.data)
+
+
 
     def retrieve(self, request, pk=None):
         queryset = User.objects.get(id=pk)
