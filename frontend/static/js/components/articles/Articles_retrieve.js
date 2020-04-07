@@ -8,7 +8,8 @@ class Articles_retrieve extends React.Component {
     items: [],
   };
   componentDidMount() {
-    fetch("http://127.0.0.1:8000/articles/" + this.props.pk, {
+    const id = Number(this.props.match.params.number);
+    fetch("http://127.0.0.1:8000/articles/" + id, {
       method: "GET",
     })
       .then((response) => {
@@ -30,9 +31,7 @@ class Articles_retrieve extends React.Component {
           <div class="right">
             <div class="desc">
               <p> {items.description}</p>
-              <p>
-                {items.like_count} {items.dislike_count}
-              </p>
+
             </div>
             <div class="im">
               <img src={items.date_publish}></img>

@@ -26,15 +26,14 @@ class Articles_list extends React.Component {
           <div class="book">
             <div class="left">
               <h1>
-                <Link to={`/article/${item.id_post}`}>{item.title}</Link>
+                <Link to={`/articles/${item.id_post}`}>{item.title}</Link>
               </h1>
+
             </div>
             <div class="right">
               <div class="desc">
                 <p> {item.description}</p>
-                <p>
-                  {item.like_count} {item.dislike_count}
-                </p>
+
               </div>
               <div class="im">
                 <img src={item.date_publish}></img>
