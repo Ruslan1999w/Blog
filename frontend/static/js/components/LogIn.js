@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./comp_style/style.scss";
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -15,14 +14,14 @@ class LoginForm extends React.Component {
   onSubmit(event) {
     let user = {
       username: this.state.login,
-      password: this.state.password
+      password: this.state.password,
     };
     let response = fetch("http://127.0.0.1:8000/auth/login/", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json;charset=utf-8"
+        "Content-Type": "application/json;charset=utf-8",
       },
-      body: JSON.stringify(user)
+      body: JSON.stringify(user),
     });
     if (response) alert(`${this.state.login}, добро пожаловать! ` + response);
     event.preventDefault();

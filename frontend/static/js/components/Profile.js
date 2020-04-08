@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./comp_style/style.scss";
 
 class Profile extends React.Component {
   constructor(props) {

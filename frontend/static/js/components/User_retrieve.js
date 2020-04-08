@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./comp_style/style.scss";
 
 class User_retrieve extends React.Component {
   state = {
@@ -9,7 +8,6 @@ class User_retrieve extends React.Component {
     items: [],
   };
   componentDidMount() {
-
     const id = Number(this.props.match.params.number);
     fetch("http://127.0.0.1:8000/users/" + id, {
       method: "GET",
@@ -27,15 +25,11 @@ class User_retrieve extends React.Component {
     return (
       <div class="wrapper">
         <div class="user">
-
-            <h1>{items.username}</h1>
-              <ul>
-
-              <li>Последний раз заходил:{items.last_login}</li>
-              <li>Чувак с нами с:{items.date_joined}</li>
-              </ul>
-
-
+          <h1>{items.username}</h1>
+          <ul>
+            <li>Последний раз заходил:{items.last_login}</li>
+            <li>Чувак с нами с:{items.date_joined}</li>
+          </ul>
         </div>
       </div>
     );
