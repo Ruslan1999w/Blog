@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./comp_style/style.scss";
 
 class LogOutForm extends React.Component {
   constructor(props) {
@@ -11,15 +10,15 @@ class LogOutForm extends React.Component {
 
   onSubmit(event) {
     let user = {
-      Token: this.state.permission
+      Token: this.state.permission,
     };
     let response = fetch("http://127.0.0.1:8000/auth/logout/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json;charset=utf-8",
-        Authorization: "Token " + this.state.permission
+        Authorization: "Token " + this.state.permission,
       },
-      body: JSON.stringify(user)
+      body: JSON.stringify(user),
     });
     if (response) alert(`${this.state.login}, Chao kakao !` + response.body);
     event.preventDefault();

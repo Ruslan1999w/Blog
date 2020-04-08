@@ -1,7 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import { Route, BrowserRouter, Link } from "react-router-dom";
-import Articles_retrieve from "./Articles_retrieve";
+import { Link } from "react-router-dom";
 
 class Articles_list extends React.Component {
   state = {
@@ -21,26 +19,26 @@ class Articles_list extends React.Component {
   render() {
     const { isLoaded, items } = this.state;
     return (
-      <div class="wrapper">
-        {items.map((item) => (
-          <div class="book">
-            <div class="left">
-              <h1>
-                <Link to={`/articles/${item.id_post}`}>{item.title}</Link>
-              </h1>
-
-            </div>
-            <div class="right">
-              <div class="desc">
-                <p> {item.description}</p>
-
+      <div class="main">
+        <div class="container">
+          {items.map((item) => (
+            <div class="article">
+              <div class="left">
+                <h1>
+                  <Link to={`/articles/${item.id_post}`}>{item.title}</Link>
+                </h1>
               </div>
-              <div class="im">
-                <img src={item.date_publish}></img>
+              <div class="right">
+                <div class="desc">
+                  <p> {item.description}</p>
+                </div>
+                <div class="im">
+                  <img src={item.date_publish}></img>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     );
   }
