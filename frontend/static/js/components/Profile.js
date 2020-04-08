@@ -34,8 +34,7 @@ class Profile extends React.Component {
         let rate_list = data.users_rate.map((rat) => {
           return rat;
         });
-        console.log("test");
-        console.log(rate_list);
+
         this.setState({
           isLoading: true,
           items: data,
@@ -50,6 +49,7 @@ class Profile extends React.Component {
     return (
       <div class="wrapper">
         <div class="profile">
+
           <div class="info">
             <ul>
               <li>

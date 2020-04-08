@@ -4,6 +4,11 @@ from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth.models import User
 
+class PostCreater(serializers.ModelSerializer):
+    class Meta:
+        model = AuthUser
+        fields = ['id','username']
+
 
 class UserSerializer(serializers.ModelSerializer):  # Сериалайзер для пользователя
     email = serializers.EmailField(
@@ -47,6 +52,7 @@ class NoteSerializer(serializers.ModelSerializer):  # Сериалайзер д�
         fields = '__all__'
 
 
+
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
@@ -62,7 +68,7 @@ class PostTagSerializer(serializers.ModelSerializer):
 
 
 class UserPostSerializer(serializers.ModelSerializer):
-    id_auth_user = UserSerializer(many=False)
+    id_auth_user = PostCreater(many=False)
 
     class Meta:
         model = UserPost
@@ -79,7 +85,7 @@ class SimplePostSerializer(serializers.ModelSerializer):  # Сериалайзе
 
     def create(self, validated_data):
         post = Post.objects.create(title=validated_data['title'], description=validated_data['description'],
-                                   date_publish=validated_data['date_publish'])
+                                   date_publish=validated_data['date_publish'], id_category=validated_data['id_category'])
         return post
 
     def update(self, instance, validated_data):

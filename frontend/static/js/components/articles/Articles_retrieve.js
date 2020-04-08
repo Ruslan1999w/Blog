@@ -1,11 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { Route, BrowserRouter, Link } from "react-router-dom";
 
 class Articles_retrieve extends React.Component {
   state = {
     error: false,
     isLoading: false,
     items: [],
+    creator: [],
   };
   componentDidMount() {
     const id = Number(this.props.match.params.number);
@@ -16,12 +18,17 @@ class Articles_retrieve extends React.Component {
         return response.json();
       })
       .then((data) => {
-        this.setState({ isLoading: true, items: data });
+      console.log(data)
+        let creator_list = data.post_creator.map((creat) => {
+          return creat;
+        });
+        console.log(creator_list)
+        this.setState({ isLoading: true, items: data, creator : creator_list });
         console.log(this);
       });
   }
   render() {
-    const { isLoaded, items } = this.state;
+    const { isLoaded, items, creator } = this.state;
     return (
       <div class="wrapper">
         <div class="book">
@@ -32,6 +39,13 @@ class Articles_retrieve extends React.Component {
             <div class="desc">
               <p> {items.description}</p>
 
+                          {creator.map((rate) => (
+            <div class="profile-rate">
+                    <h1><Link to={`/users/${rate.id_auth_user.id}`}>{rate.id_auth_user.username}</Link> 4 </h1>
+            </div>
+          ))}
+
+s
             </div>
             <div class="im">
               <img src={items.date_publish}></img>

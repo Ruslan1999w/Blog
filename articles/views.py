@@ -86,3 +86,19 @@ class RateViewSet(viewsets.ViewSet):
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
+class CategoryViewSet(viewsets.ViewSet):
+    permission_classes = [AllowAny]
+
+    def list(self, request):
+        queryset = Category.objects.all()
+        serializer = CategorySerializer(queryset,many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class TagViewSet(viewsets.ViewSet):
+    permission_classes = [AllowAny]
+
+    def list(self, request):
+        queryset = Tag.objects.all()
+        serializer = TagSerializer(queryset,many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)

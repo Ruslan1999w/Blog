@@ -11,31 +11,8 @@ import User_retrieve from "./components/User_retrieve";
 import "../css/main.scss";
 import Profile from "./components/Profile";
 const history = createBrowserHistory();
+import CreatePost from "./components/CreatePost";
 //import All_user form "./components/All_user"
-
-//
-
-//
-//
-//
-//class MyComponent extends React.Component {
-//  render() {
-//    return (
-//      <BrowserRouter>
-//        <Route path="/users" component={All_user} history={history} ></Route>
-//
-//
-//          <Route
-//            path="/article/:number"
-//            render={() => <Articles_retrieve pk={item.id_post} history={history} />}
-//          ></Route>
-//          <Route path="/article" component={Articles_list} history={history}></Route>
-//
-//        </BrowserRouter>
-//    );
-//  }
-//}
-//ReactDOM.render(<MyComponent />, document.getElementById("root"));
 
 const Home = () => (
   <div>
@@ -64,10 +41,15 @@ const Main = () => (
       <Route exact path='/' component={Home}/>
       <Route path='/users' component={All_user}/>
       <Route path='/articles' component={All_post}/>
+      <Route path='/createpost' component={CreatePost}/>
     </Switch>
   </div>
 )
 
+
+const CreatPost = () =>(
+      <Route exact path='/createpost' component={CreatePost}/>
+)
 
 const Header = () => (
   <header>
@@ -76,6 +58,7 @@ const Header = () => (
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/users'>Users</Link></li>
         <li><Link to='/articles'>Articles</Link></li>
+        <li><Link to='/createpost'>CreatPost</Link></li>
       </ul>
     </nav>
   </header>

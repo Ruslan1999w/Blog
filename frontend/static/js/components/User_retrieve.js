@@ -23,7 +23,7 @@ class User_retrieve extends React.Component {
       });
   }
   render() {
-    const { isLoaded, items } = this.state;
+    const { isLoaded, items} = this.state;
     return (
       <div class="wrapper">
         <div class="user">
