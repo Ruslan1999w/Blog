@@ -2,4 +2,6 @@
 .idea/
 myvenv
 /frontend/node_modules/
+/migrations/
 .pyc
+settings.py
