@@ -17,6 +17,9 @@ import User_list from "./components/User_list";
 import User_retrieve from "./components/User_retrieve";
 import "../css/main.scss";
 import Profile from "./components/Profile";
+const history = createBrowserHistory();
+import CreatePost from "./components/CreatePost";
+
 
 const Home = () => (
   <div>
@@ -47,7 +50,12 @@ const Main = () => (
   </div>
 );
 
+const CreatPost = () =>(
+      <Route exact path='/createpost' component={CreatePost}/>
+)
+
 const Header = () => (
+
   <div class="header">
     <div class="container">
       <nav>
@@ -63,7 +71,6 @@ const Header = () => (
     </div>
   </div>
 );
-
 const App = () => (
   <div>
     <Header />

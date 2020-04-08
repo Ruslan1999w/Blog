@@ -27,6 +27,8 @@ router.register(r'users', UserViewSet, basename='users')
 router.register(r'articles', ArticlesViewSet, basename='articles')
 router.register(r'rates', RateViewSet, basename='rates')
 router.register(r'notes', NotesViewSet, basename='notes')
+router.register(r'category', CategoryViewSet, basename='category')
+router.register(r'tag', TagViewSet, basename='tag')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
