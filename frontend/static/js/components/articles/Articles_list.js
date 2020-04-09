@@ -8,11 +8,13 @@ class Articles_list extends React.Component {
     items: [],
   };
 
-  main_image(item) {
-    console.log(item.images[0]);
-    console.log(item.images[0].path_to_image);
-    return item.images[0].path_to_image;
-    //return 0;
+  main_image(item, flag) {
+    if (flag == "image") {
+      console.log(item.post_creator[0].id_auth_user.username);
+      return item.images[0].path_to_image;
+    } else {
+      return item.post_creator[0].id_auth_user.username;
+    }
   }
 
   componentDidMount() {
@@ -34,7 +36,7 @@ class Articles_list extends React.Component {
             <div class="article">
               <div class="left">
                 <Link to={`/articles/${item.id_post}`}>
-                  <img src={this.main_image(item)}></img>
+                  <img src={this.main_image(item, "image")}></img>
                 </Link>
               </div>
               <div class="media">
@@ -42,6 +44,7 @@ class Articles_list extends React.Component {
                   <Link to={`/articles/${item.id_post}`}>{item.title}</Link>
                 </h1>
                 <p> {item.description}</p>
+                <h2> {this.main_image(item, "author")}</h2>
               </div>
             </div>
           ))}
