@@ -38,7 +38,6 @@ ul {
 
 .main {
   margin-bottom: 30px;
-  display: flexbox;
 
   .container {
     margin-left: auto;
@@ -48,10 +47,25 @@ ul {
 
     .article {
       margin-top: 30px !important;
-
-      img {
-        width: 260px;
+      display: flex;
+      font-size: 14px;
+      border-bottom: 1px solid rgba(34, 36, 38, 0.15);
+      width: 63%;
+      padding-bottom: 30px;
+      .left {
+        img {
+          border-radius: 5px;
+          width: 260px;
+          height: 146px;
+          vertical-align: middle;
+        }
       }
+
+      .media {
+        overflow: hidden;
+        margin-left: 10px;
+      }
+
       a {
         text-decoration: none;
         background-color: transparent;
