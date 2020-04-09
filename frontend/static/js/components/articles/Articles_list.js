@@ -7,12 +7,21 @@ class Articles_list extends React.Component {
     isLoading: false,
     items: [],
   };
+
+  main_image(item) {
+    console.log(item.images[0]);
+    console.log(item.images[0].path_to_image);
+    return item.images[0].path_to_image;
+    //return 0;
+  }
+
   componentDidMount() {
     fetch("http://127.0.0.1:8000/articles/")
       .then((response) => {
         return response.json();
       })
       .then((data) => {
+        console.log(data);
         this.setState({ isLoading: true, items: data });
       });
   }
@@ -25,16 +34,14 @@ class Articles_list extends React.Component {
             <div class="article">
               <div class="left">
                 <Link to={`/articles/${item.id_post}`}>
-                  <img src={item.image}></img>
+                  <img src={this.main_image(item)}></img>
                 </Link>
               </div>
               <div class="media">
-                <div class="desc">
-                  <h1>
-                    <Link to={`/articles/${item.id_post}`}>{item.title}</Link>
-                  </h1>
-                  <p> {item.description}</p>
-                </div>
+                <h1>
+                  <Link to={`/articles/${item.id_post}`}>{item.title}</Link>
+                </h1>
+                <p> {item.description}</p>
               </div>
             </div>
           ))}
