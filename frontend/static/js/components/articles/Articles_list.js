@@ -24,16 +24,16 @@ class Articles_list extends React.Component {
           {items.map((item) => (
             <div class="article">
               <div class="left">
-                <h1>
-                  <Link to={`/articles/${item.id_post}`}>{item.title}</Link>
-                </h1>
+                <Link to={`/articles/${item.id_post}`}>
+                  <img src={item.image}></img>
+                </Link>
               </div>
-              <div class="right">
+              <div class="media">
                 <div class="desc">
+                  <h1>
+                    <Link to={`/articles/${item.id_post}`}>{item.title}</Link>
+                  </h1>
                   <p> {item.description}</p>
-                </div>
-                <div class="im">
-                  <img src={item.date_publish}></img>
                 </div>
               </div>
             </div>
