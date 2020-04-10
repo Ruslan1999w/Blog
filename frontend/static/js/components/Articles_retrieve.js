@@ -48,7 +48,7 @@ class Articles_retrieve extends React.Component {
             ))}
           </div>
         </div>
-        <div class="article">
+        <div class="book">
           <p> {items.description}</p>
           <img src={items.date_publish}></img>
         </div>

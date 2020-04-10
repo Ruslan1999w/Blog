@@ -2,7 +2,10 @@
   margin: 0px;
   padding: 0px;
 }
-
+body {
+  font-family: lato-regular, "Helvetica Neue", Helvetica, Arial,
+    "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
 .header {
   background-color: #9caebf;
   min-height: 45px;
@@ -63,7 +66,10 @@ ul {
       .article {
         margin-top: 30px !important;
         display: flex;
-        font-size: 14px;
+        font-family: inherit;
+        font-weight: 400;
+        line-height: 1.2;
+        color: inherit;
         border-bottom: 1px solid rgba(34, 36, 38, 0.15);
         width: 63%;
         height: 180px;
@@ -88,6 +94,16 @@ ul {
           background-color: transparent;
           line-height: 24px;
           color: #34495e;
+        }
+        h2 {
+          color: #95a5a6;
+          font-size: 1em;
+          font-family: inherit;
+        }
+        p {
+          font-size: 1.4em;
+          line-height: 1em;
+          color: #7f8c8d;
         }
       }
     }
