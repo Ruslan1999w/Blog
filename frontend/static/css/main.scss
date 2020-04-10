@@ -66,6 +66,7 @@ ul {
         font-size: 14px;
         border-bottom: 1px solid rgba(34, 36, 38, 0.15);
         width: 63%;
+        height: 180px;
         padding-bottom: 30px;
         .left {
           img {
@@ -77,8 +78,9 @@ ul {
         }
 
         .media {
-          overflow: hidden;
           margin-left: 10px;
+          height: 80%;
+          overflow: hidden;
         }
 
         a {
