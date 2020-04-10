@@ -20,7 +20,6 @@ import Profile from "./components/Profile";
 const history = createBrowserHistory();
 import CreatePost from "./components/CreatePost";
 
-
 const Home = () => (
   <div>
     <Articles_list />
@@ -40,22 +39,20 @@ const All_post = () => (
     <Route path="/articles/:number" component={Articles_retrieve} />
   </Switch>
 );
+
 const Main = () => (
-  <div>
-    <Switch>
-      <Route exact path="/" component={Home} />
-      <Route path="/users" component={All_user} />
-      <Route path="/articles" component={All_post} />
-    </Switch>
-  </div>
+  <Switch>
+    <Route exact path="/" component={Home} />
+    <Route path="/users" component={All_user} />
+    <Route path="/articles" component={All_post} />
+  </Switch>
 );
 
-const CreatPost = () =>(
-      <Route exact path='/createpost' component={CreatePost}/>
-)
+const CreatPost = () => (
+  <Route exact path="/createpost" component={CreatePost} />
+);
 
-const Header = () => (
-
+const Header = (props) => (
   <div class="header">
     <div class="container">
       <nav>
@@ -69,6 +66,7 @@ const Header = () => (
         </ul>
       </nav>
     </div>
+    <div class="about"></div>
   </div>
 );
 const App = () => (
