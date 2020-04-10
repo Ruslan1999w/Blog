@@ -18,12 +18,12 @@ class Articles_retrieve extends React.Component {
         return response.json();
       })
       .then((data) => {
-      console.log(data)
+        console.log(data);
         let creator_list = data.post_creator.map((creat) => {
           return creat;
         });
-        console.log(creator_list)
-        this.setState({ isLoading: true, items: data, creator : creator_list });
+        console.log(creator_list);
+        this.setState({ isLoading: true, items: data, creator: creator_list });
         console.log(this);
       });
   }
@@ -31,6 +31,11 @@ class Articles_retrieve extends React.Component {
     const { isLoaded, items, creator } = this.state;
     return (
       <div class="wrapper">
+        <div class="title">
+          <div class="title-wrap">
+            <h1>End of the week, but we stell dont have a host-server.</h1>
+          </div>
+        </div>
         <div class="book">
           <div class="left">
             <h1>{items.title}</h1>
@@ -38,14 +43,16 @@ class Articles_retrieve extends React.Component {
           <div class="right">
             <div class="desc">
               <p> {items.description}</p>
-
-                          {creator.map((rate) => (
-            <div class="profile-rate">
-                    <h1><Link to={`/users/${rate.id_auth_user.id}`}>{rate.id_auth_user.username}</Link> 4 </h1>
-            </div>
-          ))}
-
-s
+              {creator.map((rate) => (
+                <div class="profile-rate">
+                  <h1>
+                    <Link to={`/users/${rate.id_auth_user.id}`}>
+                      {rate.id_auth_user.username}
+                    </Link>{" "}
+                    4{" "}
+                  </h1>
+                </div>
+              ))}
             </div>
             <div class="im">
               <img src={items.date_publish}></img>
