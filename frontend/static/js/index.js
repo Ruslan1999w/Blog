@@ -11,8 +11,8 @@ import {
 import { createBrowserHistory } from "history";
 //import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Articles_list from "./components/articles/Articles_list";
-import Articles_retrieve from "./components/articles/Articles_retrieve";
+import Articles_list from "./components/Articles_list";
+import Articles_retrieve from "./components/Articles_retrieve";
 import User_list from "./components/User_list";
 import User_retrieve from "./components/User_retrieve";
 import "../css/main.scss";
