@@ -1,23 +1,65 @@
+
+
+
 * {
   margin: 0px;
   padding: 0px;
+  box-sizing: border-box;
 }
 body {
   font-family: lato-regular, "Helvetica Neue", Helvetica, Arial,
     "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
 }
+
+$bgColor: #9caebf;
+$fontColor: #F0FFFF;
+
 .header {
-  background-color: #9caebf;
-  min-height: 45px;
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: $bgColor;
+  width: 100vw;
+  height: 5vh;
+
 
   .container {
-    width: 1170px;
-    padding-left: 15px;
-    padding-right: 15px;
-    margin-right: auto;
-    margin-left: auto;
+
+    display: flex;
+    justify-content: center;
+    margin: 0 15%;
+        li {
+        color: $fontColor;
+        font-size: 20px;
+        font-weight: bold;
+        padding: 0 40px;
+
+      }
+
+      li:hover{
+        background-color: $fontColor;
+        color:$bgColor;
+        transition: 0.2s;
+      }
+
+      input{
+        padding: auto 40px auto 80px;
+        font-size: 20px;
+        font-weight: bold;
+        background: none;
+        border: none;
+        color: $fontColor
+      }
+
+      input:hover{
+        background-color: $fontColor;
+        color: $bgColor;
+        transition: 0.2s;
+      }
+
+      img{
+        padding:  auto 40px;
+      }
   }
+
+
 }
 
 ul {
@@ -28,7 +70,6 @@ ul {
   li {
     display: inline-block;
     position: relative;
-    padding: 10px 15px;
 
     a {
       text-decoration: none;
