@@ -9,7 +9,7 @@ import {
   HashRouter,
 } from "react-router-dom";
 import { createBrowserHistory } from "history";
-//import Header from "./components/Header";
+import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Articles_list from "./components/Articles_list";
 import Articles_retrieve from "./components/Articles_retrieve";
@@ -40,10 +40,16 @@ const All_post = () => (
   </Switch>
 );
 
+const Person =() =>(
+
+  <Profile />
+
+);
+
 const Main = () => (
   <Switch>
     <Route exact path="/" component={Home} />
-    <Route path="/users" component={All_user} />
+    <Route path="/profile" component={Person} />
     <Route path="/articles" component={All_post} />
   </Switch>
 );
@@ -52,27 +58,12 @@ const CreatPost = () => (
   <Route exact path="/createpost" component={CreatePost} />
 );
 
-const Header = (props) => (
-  <div class="header">
-    <div class="container">
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/users">Users</Link>
-          </li>
-        </ul>
-      </nav>
-    </div>
-    <div class="about"></div>
-  </div>
-);
+
 const App = () => (
   <div>
     <Header />
     <Main />
+    <Footer />
   </div>
 );
 

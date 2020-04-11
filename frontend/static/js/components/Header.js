@@ -1,15 +1,42 @@
 import React from "react";
 import { Route, Link } from "react-router-dom";
-import LoginForm from "./LogIn";
-import LogOutForm from "./LogOut";
-import Articles_list from "./articles/Articles_list";
 class Header extends React.Component {
   render() {
     return (
       <div class="header">
-        <LogOutForm />
-        <LoginForm />
-        <Link to="/article">Home</Link>
+        <div class="container">
+
+          <img src="/static/img/logo.png" alt="Logo"/>
+
+            <ul>
+
+              <li>
+                <a>
+                <Link to="/">Home</Link>
+                </a>
+                
+              </li>
+
+              <li>
+              <a>
+              <Link to="/about">About us</Link>
+                  </a>
+               
+              </li>
+
+              <li>
+              <a>
+              <Link to="/profile">Profile</Link>
+                  </a>
+               
+              </li>
+            </ul>
+
+            <input type="button" value="Log in"/>
+
+
+        </div>
+
       </div>
     );
   }
