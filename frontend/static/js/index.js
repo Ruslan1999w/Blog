@@ -17,6 +17,7 @@ import User_list from "./components/User_list";
 import User_retrieve from "./components/User_retrieve";
 import "../css/main.scss";
 import Profile from "./components/Profile";
+import LoginForm from "./components/LogIn";
 const history = createBrowserHistory();
 import CreatePost from "./components/CreatePost";
 
@@ -51,6 +52,7 @@ const Main = () => (
     <Route exact path="/" component={Home} />
     <Route path="/profile" component={Person} />
     <Route path="/articles" component={All_post} />
+    <Route path="/login" component={LoginForm} />
   </Switch>
 );
 

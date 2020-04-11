@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-
+import "./comp_style/loginform.scss";
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
@@ -37,35 +37,42 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.onSubmit}>
-        <p>
-          <label>
-            {" "}
-            Логин:{" "}
-            <input
-              type="text"
-              name="login"
-              value={this.state.login}
-              onChange={this.onChangeLogin}
+      
+      <div class="login-container">
+        <form onSubmit={this.onSubmit}>
+
+        <div className="form-group">
+          <h2>Authorization</h2>
+          </div>  
+
+
+          <div className="form-group">
+          <label for="login-input">Login</label>
+            <input id="login-input"
+                type="text"
+                name="login"
+                value={this.state.login}
+                onChange={this.onChangeLogin}
             />
-          </label>
-        </p>
-        <p>
-          <label>
-            {" "}
-            Пароль:{" "}
-            <input
-              type="password"
-              name="password"
-              value={this.state.password}
-              onChange={this.onChangePassword}
+          </div>
+
+          <div className="form-group">
+          <label for="pass-input">Password</label>
+            <input id="pass-input"
+                type="password"
+                name="password"
+                value={this.state.password}
+                onChange={this.onChangePassword}
             />
-          </label>
-        </p>
-        <p>
-          <input type="submit" value="Submit" />
-        </p>
-      </form>
+          </div>  
+
+          <div className="form-group">
+            <input type="submit" value="Submit" />
+          </div>
+           
+
+        </form>
+      </div>
     );
   }
 }

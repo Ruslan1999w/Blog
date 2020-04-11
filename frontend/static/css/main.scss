@@ -43,6 +43,9 @@ body {
       }
 
       
+      a{
+        color: $fontColor
+      }
 
       li:hover{
         background-color: $fontColor;
