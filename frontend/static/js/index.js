@@ -40,10 +40,16 @@ const All_post = () => (
   </Switch>
 );
 
+const Person =() =>(
+
+  <Profile />
+
+);
+
 const Main = () => (
   <Switch>
     <Route exact path="/" component={Home} />
-    <Route path="/users" component={All_user} />
+    <Route path="/profile" component={Person} />
     <Route path="/articles" component={All_post} />
   </Switch>
 );
@@ -52,10 +58,12 @@ const CreatPost = () => (
   <Route exact path="/createpost" component={CreatePost} />
 );
 
+
 const App = () => (
   <div>
     <Header />
     <Main />
+    <Footer />
   </div>
 );
 

@@ -6,20 +6,29 @@ class Header extends React.Component {
       <div class="header">
         <div class="container">
 
-          <img src="../img/logo.png" alt="Logo"/>
+          <img src="/static/img/logo.png" alt="Logo"/>
 
             <ul>
 
               <li>
+                <a>
                 <Link to="/">Home</Link>
+                </a>
+                
               </li>
 
               <li>
-                <Link to="/about">About us</Link>
+              <a>
+              <Link to="/about">About us</Link>
+                  </a>
+               
               </li>
 
               <li>
-                <Link to="/profile">Profile</Link>
+              <a>
+              <Link to="/profile">Profile</Link>
+                  </a>
+               
               </li>
             </ul>
 
