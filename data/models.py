@@ -48,8 +48,8 @@ class AuthUser(models.Model):
     is_staff = models.BooleanField()
     is_active = models.BooleanField()
     date_joined = models.DateTimeField()
-    git_reference = models.CharField(max_length=250, blank=True, null=True)
-    avatar = models.CharField(max_length=256, blank=True, null=True)
+    git_reference = models.CharField(max_length=250)
+    avatar = models.CharField(max_length=256)
 
     class Meta:
         managed = False

@@ -2,34 +2,32 @@ from rest_framework.validators import UniqueValidator
 from data.models import Post, UserPost, Note, Tag, PostTag, Category, AuthUser, RatingPost, Image
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
-from django.contrib.auth.models import User
+
 
 class PostCreater(serializers.ModelSerializer):
     class Meta:
         model = AuthUser
-        fields = ['id','username']
+        fields = ['id', 'username']
 
 
 class UserSerializer(serializers.ModelSerializer):  # Сериалайзер для пользователя
     email = serializers.EmailField(
         required=True,
-        validators=[UniqueValidator(queryset=User.objects.all())]
+        validators=[UniqueValidator(queryset=AuthUser.objects.all())]
     )
     username = serializers.CharField(
-        validators=[UniqueValidator(queryset=User.objects.all())]
+        validators=[UniqueValidator(queryset=AuthUser.objects.all())]
     )
     password = serializers.CharField(min_length=4)
 
     def create(self, validated_data):
-        user = User.objects.create_user(validated_data['username'], validated_data['email'],
-                                        validated_data['password'])
+        user = AuthUser.objects.create_user(validated_data['username'], validated_data['email'],
+                                            validated_data['password'])
         return user
 
     class Meta:
         model = AuthUser
-        fields = ['id','last_login', 'is_superuser', 'username',
-                  'first_name', 'last_name', 'email', 'is_staff', 'is_active', 'date_joined', 'git_reference',
-                  'password']
+        fields = '__all__'
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -50,7 +48,6 @@ class NoteSerializer(serializers.ModelSerializer):  # Сериалайзер д�
     class Meta:
         model = Note
         fields = '__all__'
-
 
 
 class TagSerializer(serializers.ModelSerializer):
@@ -85,7 +82,8 @@ class SimplePostSerializer(serializers.ModelSerializer):  # Сериалайзе
 
     def create(self, validated_data):
         post = Post.objects.create(title=validated_data['title'], description=validated_data['description'],
-                                   date_publish=validated_data['date_publish'], id_category=validated_data['id_category'])
+                                   date_publish=validated_data['date_publish'],
+                                   id_category=validated_data['id_category'])
         return post
 
     def update(self, instance, validated_data):
