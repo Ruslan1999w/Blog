@@ -1,6 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./comp_style/loginform.scss";
+
+import {
+  Route,
+  Link,
+} from "react-router-dom";
+
+
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
@@ -68,8 +75,12 @@ class LoginForm extends React.Component {
 
           <div className="form-group">
             <input type="submit" value="Submit" />
+            <a>
+              <Link to="/registration">New user?</Link>
+                  </a>
           </div>
            
+         
 
         </form>
       </div>
