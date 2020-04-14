@@ -21,8 +21,12 @@ class UserSerializer(serializers.ModelSerializer):  # Сериалайзер д�
     password = serializers.CharField(min_length=4)
 
     def create(self, validated_data):
-        user = User.objects.create_user(validated_data['username'], validated_data['email'],
-                                        validated_data['password'])
+        user = User.objects.create_user(username=validated_data['username'],
+                                        email=validated_data['email'],
+                                        password=validated_data['password'],
+                                        first_name=validated_data['first_name'],
+                                        last_name=validated_data['last_name'],
+                                        date_joined=validated_data['date_joined'])
         return user
 
     class Meta:

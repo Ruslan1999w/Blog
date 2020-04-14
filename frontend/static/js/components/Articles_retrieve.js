@@ -52,6 +52,8 @@ class Articles_retrieve extends React.Component {
           <p> {items.description}</p>
           <img src={items.date_publish}></img>
         </div>
+
+        
       </div>
     );
   }
