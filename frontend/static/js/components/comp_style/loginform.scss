@@ -1,0 +1,54 @@
+$bgColor: #9caebf;
+$fontColor: #636b6f;
+$hoverColor: #33587C;
+
+
+
+.login-container {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 15%;
+    height: 80vh;
+    color: $fontColor;
+
+    form{
+        position: relative;
+        width: 33vw;
+        height: 50vh;
+        background-color: #ecf0f1;
+        display: flex;
+        flex-flow: row wrap;
+
+
+
+        .form-group{
+            margin: 10px;
+            height: 10vh;
+            width: 90%;
+            
+            label{
+                margin-left: 3vw;
+                display: block;
+                font-size: 16px;
+                color: $fontColor;
+            }
+            input{
+                margin: 0 auto;
+                display: block;
+                width: 80%;
+                padding: 5px;
+                font-size: 24px;
+                border: none;
+                background-color: #fff;
+                color: $fontColor;
+            }
+
+            h2{
+                text-align: center;
+            }
+        }
+    }
+
+}

@@ -1,8 +1,10 @@
 import React from "react";
 import { Route, Link } from "react-router-dom";
+
 class Header extends React.Component {
   render() {
     return (
+     
       <div class="header">
         <div class="container">
 
@@ -32,8 +34,9 @@ class Header extends React.Component {
               </li>
             </ul>
 
-            <input type="button" value="Log in"/>
-
+            <Link to="/login">
+              <input type="button" value="Log in"/>
+            </Link>
 
         </div>
 
