@@ -52,8 +52,8 @@ class Articles_retrieve extends React.Component {
         <div class="book">
           <p> {items.description}</p>
           <img src={items.date_publish}></img>
+          <Articles_comment_form />
         </div>
-        <Articles_comment_form />
       </div>
     );
   }
