@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Route, BrowserRouter, Link } from "react-router-dom";
+import Articles_comment_form from "./Article_comment_form";
 import "./comp_style/article_retrieve.scss";
 
 class Articles_retrieve extends React.Component {
@@ -52,8 +53,7 @@ class Articles_retrieve extends React.Component {
           <p> {items.description}</p>
           <img src={items.date_publish}></img>
         </div>
-
-        
+        <Articles_comment_form />
       </div>
     );
   }

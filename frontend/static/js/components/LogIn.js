@@ -2,11 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./comp_style/loginform.scss";
 
-import {
-  Route,
-  Link,
-} from "react-router-dom";
-
+import { Route, Link } from "react-router-dom";
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -30,7 +26,9 @@ class LoginForm extends React.Component {
       },
       body: JSON.stringify(user),
     });
-    if (response) alert(`${this.state.login}, добро пожаловать! ` + response);
+    if (response.ok)
+      alert(`${this.state.login}, добро пожаловать! ` + response);
+    else alert("try again");
     event.preventDefault();
   }
 
@@ -44,44 +42,40 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      
       <div class="login-container">
         <form onSubmit={this.onSubmit}>
-
-        <div className="form-group">
-          <h2>Authorization</h2>
-          </div>  
-
+          <div className="form-group">
+            <h2>Authorization</h2>
+          </div>
 
           <div className="form-group">
-          <label for="login-input">Login</label>
-            <input id="login-input"
-                type="text"
-                name="login"
-                value={this.state.login}
-                onChange={this.onChangeLogin}
+            <label for="login-input">Login</label>
+            <input
+              id="login-input"
+              type="text"
+              name="login"
+              value={this.state.login}
+              onChange={this.onChangeLogin}
             />
           </div>
 
           <div className="form-group">
-          <label for="pass-input">Password</label>
-            <input id="pass-input"
-                type="password"
-                name="password"
-                value={this.state.password}
-                onChange={this.onChangePassword}
+            <label for="pass-input">Password</label>
+            <input
+              id="pass-input"
+              type="password"
+              name="password"
+              value={this.state.password}
+              onChange={this.onChangePassword}
             />
-          </div>  
+          </div>
 
           <div className="form-group">
             <input type="submit" value="Submit" />
             <a>
               <Link to="/registration">New user?</Link>
-                  </a>
+            </a>
           </div>
-           
-         
-
         </form>
       </div>
     );

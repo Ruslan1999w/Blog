@@ -22,7 +22,7 @@ class UserViewSet(viewsets.ViewSet):  # класс предоставляющи�
         serializer = UserSerializer(queryset, many=True)
         return Response(serializer.data)
 
-    def retrieve(self, request, pk=None):
+    def retrieve(self, request, pk=None):  # вывод пользователя по id
         queryset = User.objects.get(id=pk)
         serializer = UserSerializer(queryset, many=False)
         return Response(serializer.data)
@@ -42,7 +42,9 @@ class AuthViewSet(viewsets.ViewSet):  # класс предоставляющи�
                 json = serializer.data
                 json['token'] = token.key
                 return Response(json, status=status.HTTP_201_CREATED)
-
+        else:
+            print("some problems with validation")
+            print(serializer.errors)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def destroy(self, request, pk=None):  # Удаление поста пользователя, по id поста
