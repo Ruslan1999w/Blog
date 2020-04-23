@@ -96,7 +96,7 @@ ul {
       text-decoration: none;
       background-color: transparent;
       line-height: 24px;
-      color: #fff;
+      color: $fontColor;
     }
   }
 }
@@ -104,15 +104,16 @@ ul {
 .wrapper {
   .title {
     min-height: 200px;
-    background-color: #9caebf;
-    color: #fff;
+    background-color: $bgColor;
+    color: $fontColor;
 
     .title-wrap {
-      width: 1170px;
+      width: 100%;
       padding-left: 15px;
       padding-right: 15px;
       margin-right: auto;
       margin-left: auto;
+      height: 100%;
     }
   }
 

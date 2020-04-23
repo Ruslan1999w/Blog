@@ -33,16 +33,15 @@ class Articles_retrieve extends React.Component {
       <div class="wrapper">
         <div class="title">
           <div class="title-wrap">
-            <h1>End of the week, but we stell dont have a host-server.</h1>
             {creator.map((rate) => (
               <div class="profile-rate">
-                <h2>
-                  Author:
+                <h2>{items.title}</h2>
+                <h4>
                   <Link to={`/users/${rate.id_auth_user.id}`}>
                     {rate.id_auth_user.username}
                   </Link>
-                </h2>
-                <h2>Post-name: {items.title}</h2>
+                </h4>
+                
               </div>
             ))}
           </div>
