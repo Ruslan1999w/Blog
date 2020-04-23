@@ -1,6 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import { Route, BrowserRouter, Link } from "react-router-dom";
 import "./comp_style/article_comment_form.scss";
 
 class Article_comment_form extends React.Component {

@@ -3,11 +3,9 @@ import ReactDOM from "react-dom";
 import { Route, BrowserRouter, Link } from "react-router-dom";
 import Articles_comment_form from "./Article_comment_form";
 import "./comp_style/article_retrieve.scss";
-
+import Articles_retrieve_all_notes from "./Articles_retrieve_all_notes";
 class Articles_retrieve extends React.Component {
   state = {
-    error: false,
-    isLoading: false,
     items: [],
     creator: [],
   };
@@ -20,17 +18,17 @@ class Articles_retrieve extends React.Component {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         let creator_list = data.post_creator.map((creat) => {
           return creat;
         });
-        console.log(creator_list);
-        this.setState({ isLoading: true, items: data, creator: creator_list });
-        console.log(this);
+        // console.log(creator_list);
+        this.setState({ id_post: id, items: data, creator: creator_list });
+        // console.log(this);
       });
   }
   render() {
-    const { isLoaded, items, creator } = this.state;
+    const { items, creator } = this.state;
     return (
       <div class="wrapper">
         <div class="title">
@@ -53,6 +51,9 @@ class Articles_retrieve extends React.Component {
           <p> {items.description}</p>
           <img src={items.date_publish}></img>
           <Articles_comment_form />
+          <Articles_retrieve_all_notes
+            id_post={Number(this.props.match.params.number)}
+          />
         </div>
       </div>
     );
