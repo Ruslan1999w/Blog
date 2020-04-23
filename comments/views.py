@@ -8,7 +8,7 @@ from data.models import AuthUser, Post, Note
 
 
 class NotesViewSet(viewsets.ViewSet):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
 
     def create(self, request):  # Создание комментария
         serializer = NoteSerializer(data=request.data)
@@ -22,12 +22,13 @@ class NotesViewSet(viewsets.ViewSet):
         print(serializer.errors)
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
-    def list(self, request):  # листинг всех комментов под постом
-        queryset = Note.objects.filter(id_post=request.data['id_post'])
+    @action(detail=True, methods=['get'])  # Создание статьи
+    def comments_list(self, request, pk=None):  # листинг всех комментов под постом
+        queryset = Note.objects.filter(id_post=pk)
         serializer = NoteSerializer(queryset, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-    def retrieve(self, request, pk=None):  # Извлечение комментария по id
+    def retrieve(self, request, pk=None):  # Извлечение комментария пользователя по его id
         queryset = Note.objects.filter(id_auth_user=request.user.id)
         serializer = NoteSerializer(queryset, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
