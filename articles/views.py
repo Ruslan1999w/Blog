@@ -4,7 +4,7 @@ from data.serializers import *
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAdminUser, AllowAny, IsAuthenticated
-from data.models import AuthUser, Post, UserPost, RatingPost, PostTag, Tag, Image
+from data.models import AuthUser, Post, UserPost, RatingPost, PostTag, Tag, Image, Category
 
 
 class ArticlesViewSet(viewsets.ViewSet):
@@ -100,5 +100,5 @@ class TagViewSet(viewsets.ViewSet):
 
     def list(self, request):
         queryset = Tag.objects.all()
-        serializer = TagSerializer(queryset,many=True)
+        serializer = TagSerializer(queryset, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)

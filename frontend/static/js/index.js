@@ -8,6 +8,7 @@ import {
   Link,
   HashRouter,
 } from "react-router-dom";
+import { Provider } from "react-redux";
 import { createBrowserHistory } from "history";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -69,7 +70,9 @@ const App = () => (
 
 ReactDOM.render(
   <HashRouter>
-    <App />
+    <Provider value={"Token"}>
+      <App />
+    </Provider>
   </HashRouter>,
   document.getElementById("root")
 );
