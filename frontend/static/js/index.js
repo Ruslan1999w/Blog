@@ -20,7 +20,7 @@ import Profile from "./components/Profile";
 import LoginForm from "./components/LogIn";
 import CreatePost from "./components/CreatePost";
 import RegisterForm from "./components/Register";
-
+import AboutUs from "./components/AboutUs";
 const history = createBrowserHistory();
 
 const Home = () => (
@@ -52,6 +52,7 @@ const Main = () => (
     <Route path="/articles" component={All_post} />
     <Route path="/login" component={LoginForm} />
     <Route path="/registration" component={RegisterForm} />
+    <Route path="/about" component={AboutUs} />
   </Switch>
 );
 
