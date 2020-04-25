@@ -1,0 +1,73 @@
+$bgColor: #9caebf;
+$fontColor: #F0FFFF;
+$hoverColor: #33587C;
+
+
+
+.wrapper{
+
+    display: flex;
+    justify-content: center;
+    flex-flow: column wrap;
+
+    .title{
+        display: flex;
+        align-items: center;
+
+        h1{
+            text-align: center;
+            width: 100%;
+            padding: 40px auto;
+        
+        }
+    }
+
+    h1{
+        text-align: center;
+        width: 100%;
+        padding: 40px auto;
+    
+    }
+
+    .info{
+        width: 1170px;
+        margin: 0 auto;
+
+        p{
+            text-align: center;
+            width: 100%;
+            margin: 40px auto;
+            padding: 40px auto;
+            font-size: 20px;
+        
+        }
+    }
+
+    
+
+    .authors{
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+
+        .author{
+            margin:20px;
+            padding: 40px;
+            text-align: center;
+            
+
+
+            img{
+                max-width: 300px;
+                max-height: 300px;
+                min-width: 300px;
+                min-height: 300px;
+            }
+
+
+        }
+
+    }
+
+
+}

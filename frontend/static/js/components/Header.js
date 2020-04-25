@@ -37,5 +37,4 @@ class Header extends React.Component {
     );
   }
 }
-Header.contextType = ThemeContext;
 export default Header;

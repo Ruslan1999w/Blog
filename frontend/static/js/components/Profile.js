@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import UserProfile from "../containers/user_profile";
 
 class Profile extends React.Component {
   constructor(props) {
@@ -7,8 +8,6 @@ class Profile extends React.Component {
   }
 
   state = {
-    error: false,
-    isLoading: false,
     comments: [],
     rates: [],
     items: [],
@@ -35,7 +34,6 @@ class Profile extends React.Component {
         });
 
         this.setState({
-          isLoading: true,
           items: data,
           comments: comment_list,
           rates: rate_list,
@@ -44,14 +42,14 @@ class Profile extends React.Component {
   }
 
   render() {
-    const { isLoaded, items, comments, rates } = this.state;
+    const { items, comments, rates } = this.state;
     return (
       <div class="wrapper">
         <div class="profile">
-
           <div class="info">
             <ul>
               <li>
+                <UserProfile />
                 <p>Username: {items.username}</p>
               </li>
               <li>

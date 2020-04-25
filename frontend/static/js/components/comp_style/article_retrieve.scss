@@ -1,3 +1,8 @@
+
+$bgColor: #9caebf;
+$fontColor: #F0FFFF;
+$hoverColor: #33587C;
+
 .book {
   margin-left: auto;
   margin-right: auto;
@@ -8,4 +13,33 @@
   font-size: 21px;
   line-height: 1.58;
   margin-top: 6%;
+}
+
+.title-wrap{
+
+
+.profile-rate{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column wrap;
+
+ h2{
+   text-align: center;
+   padding: 40px 0;
+ }
+
+ h4{
+   text-align: center;
+ }
+ a{
+   text-decoration: none;
+   color: $fontColor;
+ }
+
+
+}
+
+
+
 }
