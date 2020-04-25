@@ -18,13 +18,10 @@ class Articles_retrieve extends React.Component {
         return response.json();
       })
       .then((data) => {
-        // console.log(data);
         let creator_list = data.post_creator.map((creat) => {
           return creat;
         });
-        // console.log(creator_list);
         this.setState({ id_post: id, items: data, creator: creator_list });
-        // console.log(this);
       });
   }
   render() {
@@ -41,7 +38,6 @@ class Articles_retrieve extends React.Component {
                     {rate.id_auth_user.username}
                   </Link>
                 </h4>
-                
               </div>
             ))}
           </div>

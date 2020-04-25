@@ -3,14 +3,11 @@ import { Link } from "react-router-dom";
 
 class Articles_list extends React.Component {
   state = {
-    error: false,
-    isLoading: false,
     items: [],
   };
 
   main_image(item, flag) {
     if (flag == "image") {
-      console.log(item.post_creator[0].id_auth_user.username);
       return item.images[0].path_to_image;
     } else {
       return item.post_creator[0].id_auth_user.username;
@@ -23,12 +20,11 @@ class Articles_list extends React.Component {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
-        this.setState({ isLoading: true, items: data });
+        this.setState({ items: data });
       });
   }
   render() {
-    const { isLoaded, items } = this.state;
+    const { items } = this.state;
     return (
       <div class="wrapper">
         <div class="title">

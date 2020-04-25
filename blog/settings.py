@@ -65,8 +65,6 @@ REST_FRAMEWORK = {
     ],
 }
 
-
-
 ROOT_URLCONF = 'blog.urls'
 
 TEMPLATES = [
