@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { bindActionCreators } from "redux";
+import { AUTH_USER, boundAUTH_USER } from "../actions/actionTypes";
 import { connect } from "react-redux";
 
 class UserProfile extends Component {
