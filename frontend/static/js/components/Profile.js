@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import UserProfile from "../containers/user_profile";
+import { connect } from "react-redux";
 
 class Profile extends React.Component {
   constructor(props) {
@@ -14,9 +15,9 @@ class Profile extends React.Component {
   };
 
   componentDidMount() {
-    fetch("http://127.0.0.1:8000/auth/personal_account", {
+    fetch("http://127.0.0.1:8000/auth/personal_account/", {
       headers: {
-        Authorization: "Token b45a1c84dfeca666c2f3cd2b728386c0fb74013c",
+        Authorization: this.props.user,
         method: "GET",
       },
     })
@@ -42,6 +43,7 @@ class Profile extends React.Component {
   }
 
   render() {
+    console.log("Profile " + this.props.user[0]);
     const { items, comments, rates } = this.state;
     return (
       <div class="wrapper">
@@ -49,7 +51,6 @@ class Profile extends React.Component {
           <div class="info">
             <ul>
               <li>
-                <UserProfile />
                 <p>Username: {items.username}</p>
               </li>
               <li>
@@ -89,4 +90,9 @@ class Profile extends React.Component {
     );
   }
 }
-export default Profile;
+export default connect(
+  state => ({
+    user: state
+  }),
+)(Profile);
+

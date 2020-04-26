@@ -10,8 +10,6 @@ import {
 } from "react-router-dom";
 import { createBrowserHistory } from "history";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
-import allReducers from "./reducers/main_reducer";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Articles_list from "./components/Articles_list";
@@ -24,9 +22,9 @@ import LoginForm from "./components/LogIn";
 import CreatePost from "./components/CreatePost";
 import RegisterForm from "./components/Register";
 import AboutUs from "./components/AboutUs";
+import { store } from "./store/store";
 
 const history = createBrowserHistory();
-const store = createStore(allReducers);
 
 const Home = () => (
   <div>
