@@ -6872,6 +6872,14 @@ var User_list_User_list = /*#__PURE__*/function (_React$Component) {
 // EXTERNAL MODULE: ./static/css/main.scss
 var main = __webpack_require__(31);
 
+// CONCATENATED MODULE: ./static/js/actions/UserActions.js
+var AUTH_USER = 'AUTH_USER';
+function setUser(user) {
+  return {
+    type: 'AUTH_USER',
+    payload: credentials
+  };
+}
 // CONCATENATED MODULE: ./static/js/components/Profile.js
 function Profile_typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { Profile_typeof = function _typeof(obj) { return typeof obj; }; } else { Profile_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return Profile_typeof(obj); }
 
@@ -6982,6 +6990,14 @@ var Profile_mapStateToProps = function mapStateToProps(store) {
   return {
     user: store.user,
     test: store.test
+  };
+};
+
+var Profile_mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    setUserAction: function setUserAction(user) {
+      return dispatch(setUser(user));
+    }
   };
 };
 
@@ -7545,11 +7561,11 @@ var rootReducer = combineReducers({
 
 var store_store = createStore(rootReducer);
 store_store.subscribe(function () {
-  console.log("subscribe", store_store.getState());
+  console.log('subscribe', store_store.getState());
 });
 store_store.dispatch({
-  type: "AUTH_USER",
-  payload: "Token 94261c623a73d002beec78f0629dd6b18234fb1d"
+  type: 'AUTH_USER',
+  payload: 'Token 94261c623a73d002beec78f0629dd6b18234fb1d'
 });
 // CONCATENATED MODULE: ./static/js/index.js
 
@@ -7639,7 +7655,7 @@ var js_App = function App() {
 
 react_dom_default.a.render( /*#__PURE__*/react_default.a.createElement(react_router_dom_HashRouter, null, /*#__PURE__*/react_default.a.createElement(components_Provider, {
   store: store_store
-}, /*#__PURE__*/react_default.a.createElement(js_App, null))), document.getElementById("root"));
+}, /*#__PURE__*/react_default.a.createElement(js_App, null))), document.getElementById('root'));
 
 /***/ })
 /******/ ]);
