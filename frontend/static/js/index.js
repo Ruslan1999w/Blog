@@ -1,28 +1,21 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import {
-  BrowserRouter,
-  Route,
-  Redirect,
-  Switch,
-  Link,
-  HashRouter,
-} from "react-router-dom";
-import { createBrowserHistory } from "history";
-import { Provider } from "react-redux";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import Articles_list from "./components/Articles_list";
-import Articles_retrieve from "./components/Articles_retrieve";
-import User_list from "./components/User_list";
-import User_retrieve from "./components/User_retrieve";
-import "../css/main.scss";
-import Profile from "./components/Profile";
-import LoginForm from "./components/LogIn";
-import CreatePost from "./components/CreatePost";
-import RegisterForm from "./components/Register";
-import AboutUs from "./components/AboutUs";
-import { store } from "./store/store";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Route, Switch, HashRouter } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
+import { Provider } from 'react-redux';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Articles_list from './components/Articles_list';
+import Articles_retrieve from './components/Articles_retrieve';
+import User_list from './components/User_list';
+import User_retrieve from './components/User_retrieve';
+import '../css/main.scss';
+import Profile from './components/Profile';
+import LoginForm from './components/LogIn';
+import CreatePost from './components/CreatePost';
+import RegisterForm from './components/Register';
+import AboutUs from './components/AboutUs';
+import { store } from './store/store';
 
 const history = createBrowserHistory();
 
@@ -78,5 +71,5 @@ ReactDOM.render(
     </Provider>
   </HashRouter>,
 
-  document.getElementById("root")
+  document.getElementById('root')
 );

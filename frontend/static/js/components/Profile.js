@@ -1,6 +1,6 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { connect } from 'react-redux'
+import React from 'react';
+import { connect } from 'react-redux';
+import { setUser } from '../actions/UserActions';
 
 class Profile extends React.Component {
   constructor(props) {
@@ -36,7 +36,7 @@ class Profile extends React.Component {
         this.setState({
           items: data,
           comments: comment_list,
-          rates: rate_list, 
+          rates: rate_list,
         });
       });
   }
@@ -92,6 +92,11 @@ const mapStateToProps = (store) => {
   return {
     user: store.user,
     test: store.test,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setUserAction: (user) => dispatch(setUser(user)),
   };
 };
 export default connect(mapStateToProps)(Profile);
