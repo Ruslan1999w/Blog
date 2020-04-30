@@ -1,13 +1,13 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./comp_style/loginform.scss";
-
-import { Route, Link } from "react-router-dom";
+import React from 'react';
+import { connect } from 'react-redux';
+import { setUser } from '../actions/UserActions';
+import './comp_style/loginform.scss';
+import { Link } from 'react-router-dom';
 
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { login: "", password: "" };
+    this.state = { login: '', password: '' };
 
     this.onChangeLogin = this.onChangeLogin.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
@@ -19,16 +19,24 @@ class LoginForm extends React.Component {
       username: this.state.login,
       password: this.state.password,
     };
-    let response = fetch("http://127.0.0.1:8000/auth/login/", {
-      method: "POST",
+    let response = fetch('http://127.0.0.1:8000/auth/login/', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json;charset=utf-8",
+        'Content-Type': 'application/json;charset=utf-8',
       },
       body: JSON.stringify(user),
-    });
-    if (response.ok)
-      alert(`${this.state.login}, добро пожаловать! ` + response);
-    else alert("try again");
+    })
+      .then((response) => {
+        if (response.ok) {
+          // alert(`${this.state.login}, добро пожаловать! `);
+          console.log(response);
+        } else alert('try again ', response.status);
+        return response.json();
+      })
+      .then((data) => {
+        setUser(data.token);
+      });
+
     event.preventDefault();
   }
 
@@ -82,4 +90,11 @@ class LoginForm extends React.Component {
   }
 }
 
-export default LoginForm;
+const mapStateToProps = (store) => {
+  return {
+    user: store.user,
+    test: store.test,
+  };
+};
+
+export default connect(mapStateToProps)(LoginForm);

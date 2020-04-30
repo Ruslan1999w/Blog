@@ -94,9 +94,4 @@ const mapStateToProps = (store) => {
     test: store.test,
   };
 };
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setUserAction: (user) => dispatch(setUser(user)),
-  };
-};
 export default connect(mapStateToProps)(Profile);
