@@ -6872,13 +6872,77 @@ var User_list_User_list = /*#__PURE__*/function (_React$Component) {
 // EXTERNAL MODULE: ./static/css/main.scss
 var main = __webpack_require__(31);
 
+// CONCATENATED MODULE: ./static/js/reducers/userReducer.js
+function userReducer_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { userReducer_ownKeys(Object(source), true).forEach(function (key) { userReducer_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { userReducer_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function userReducer_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var initialState = {
+  Token: 'Token undef'
+};
+function userReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case 'AUTH_USER':
+      return _objectSpread({}, state, {
+        Token: action.payload
+      });
+  }
+
+  return state;
+}
+// CONCATENATED MODULE: ./static/js/reducers/test_reducer.js
+function test_reducer_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function test_reducer_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { test_reducer_ownKeys(Object(source), true).forEach(function (key) { test_reducer_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { test_reducer_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function test_reducer_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var test_reducer_initialState = {
+  name: 'TEST'
+};
+function test_reducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : test_reducer_initialState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case 'TEST':
+      console.log('test_reducer ' + state);
+      return test_reducer_objectSpread({}, state, {
+        test: action.payload
+      });
+  }
+
+  return state;
+}
+// CONCATENATED MODULE: ./static/js/reducers/rootReducer.js
+
+
+
+var rootReducer = combineReducers({
+  user: userReducer,
+  test: test_reducer
+});
+// CONCATENATED MODULE: ./static/js/store/store.js
+
+
+var store_store = createStore(rootReducer);
+store_store.subscribe(function () {
+  console.log('subscribe', store_store.getState());
+});
 // CONCATENATED MODULE: ./static/js/actions/UserActions.js
+
 var AUTH_USER = 'AUTH_USER';
 function setUser(user) {
-  return {
+  var action = {
     type: 'AUTH_USER',
-    payload: credentials
+    payload: user
   };
+  store_store.dispatch(action);
 }
 // CONCATENATED MODULE: ./static/js/components/Profile.js
 function Profile_typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { Profile_typeof = function _typeof(obj) { return typeof obj; }; } else { Profile_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return Profile_typeof(obj); }
@@ -6993,14 +7057,6 @@ var Profile_mapStateToProps = function mapStateToProps(store) {
   };
 };
 
-var Profile_mapDispatchToProps = function mapDispatchToProps(dispatch) {
-  return {
-    setUserAction: function setUserAction(user) {
-      return dispatch(setUser(user));
-    }
-  };
-};
-
 /* harmony default export */ var components_Profile = (connect_connect(Profile_mapStateToProps)(Profile_Profile));
 // EXTERNAL MODULE: ./static/js/components/comp_style/loginform.scss
 var loginform = __webpack_require__(13);
@@ -7033,6 +7089,7 @@ function LogIn_setPrototypeOf(o, p) { LogIn_setPrototypeOf = Object.setPrototype
 
 
 
+
 var LogIn_LoginForm = /*#__PURE__*/function (_React$Component) {
   LogIn_inherits(LoginForm, _React$Component);
 
@@ -7045,8 +7102,8 @@ var LogIn_LoginForm = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      login: "",
-      password: ""
+      login: '',
+      password: ''
     };
     _this.onChangeLogin = _this.onChangeLogin.bind(LogIn_assertThisInitialized(_this));
     _this.onChangePassword = _this.onChangePassword.bind(LogIn_assertThisInitialized(_this));
@@ -7061,14 +7118,22 @@ var LogIn_LoginForm = /*#__PURE__*/function (_React$Component) {
         username: this.state.login,
         password: this.state.password
       };
-      var response = fetch("http://127.0.0.1:8000/auth/login/", {
-        method: "POST",
+      var response = fetch('http://127.0.0.1:8000/auth/login/', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json;charset=utf-8"
+          'Content-Type': 'application/json;charset=utf-8'
         },
         body: JSON.stringify(user)
+      }).then(function (response) {
+        if (response.ok) {
+          // alert(`${this.state.login}, добро пожаловать! `);
+          console.log(response);
+        } else alert('try again ', response.status);
+
+        return response.json();
+      }).then(function (data) {
+        setUser(data.token);
       });
-      if (response.ok) alert("".concat(this.state.login, ", \u0434\u043E\u0431\u0440\u043E \u043F\u043E\u0436\u0430\u043B\u043E\u0432\u0430\u0442\u044C! ") + response);else alert("try again");
       event.preventDefault();
     }
   }, {
@@ -7128,7 +7193,14 @@ var LogIn_LoginForm = /*#__PURE__*/function (_React$Component) {
   return LoginForm;
 }(react_default.a.Component);
 
-/* harmony default export */ var LogIn = (LogIn_LoginForm);
+var LogIn_mapStateToProps = function mapStateToProps(store) {
+  return {
+    user: store.user,
+    test: store.test
+  };
+};
+
+/* harmony default export */ var LogIn = (connect_connect(LogIn_mapStateToProps)(LogIn_LoginForm));
 // CONCATENATED MODULE: ./static/js/components/CreatePost.js
 function CreatePost_typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { CreatePost_typeof = function _typeof(obj) { return typeof obj; }; } else { CreatePost_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return CreatePost_typeof(obj); }
 
@@ -7501,72 +7573,6 @@ var AboutUs_AboutUs = /*#__PURE__*/function (_React$Component) {
 }(react_default.a.Component);
 
 /* harmony default export */ var components_AboutUs = (AboutUs_AboutUs);
-// CONCATENATED MODULE: ./static/js/reducers/userReducer.js
-function userReducer_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { userReducer_ownKeys(Object(source), true).forEach(function (key) { userReducer_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { userReducer_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function userReducer_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var initialState = {
-  Token: 'Token undef'
-};
-function userReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
-  var action = arguments.length > 1 ? arguments[1] : undefined;
-
-  switch (action.type) {
-    case 'AUTH_USER':
-      return _objectSpread({}, state, {
-        credentials: action.payload
-      });
-  }
-
-  return state;
-}
-// CONCATENATED MODULE: ./static/js/reducers/test_reducer.js
-function test_reducer_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function test_reducer_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { test_reducer_ownKeys(Object(source), true).forEach(function (key) { test_reducer_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { test_reducer_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function test_reducer_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var test_reducer_initialState = {
-  name: 'TEST'
-};
-function test_reducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : test_reducer_initialState;
-  var action = arguments.length > 1 ? arguments[1] : undefined;
-
-  switch (action.type) {
-    case 'TEST':
-      console.log('test_reducer ' + state);
-      return test_reducer_objectSpread({}, state, {
-        test: action.payload
-      });
-  }
-
-  return state;
-}
-// CONCATENATED MODULE: ./static/js/reducers/rootReducer.js
-
-
-
-var rootReducer = combineReducers({
-  user: userReducer,
-  test: test_reducer
-});
-// CONCATENATED MODULE: ./static/js/store/store.js
-
-
-var store_store = createStore(rootReducer);
-store_store.subscribe(function () {
-  console.log('subscribe', store_store.getState());
-});
-store_store.dispatch({
-  type: 'AUTH_USER',
-  payload: 'Token 94261c623a73d002beec78f0629dd6b18234fb1d'
-});
 // CONCATENATED MODULE: ./static/js/index.js
 
 

@@ -1,8 +1,10 @@
+import { store } from '../store/store';
 export const AUTH_USER = 'AUTH_USER';
 
 export function setUser(user) {
-  return {
+  const action = {
     type: 'AUTH_USER',
-    payload: credentials,
+    payload: user,
   };
+  store.dispatch(action);
 }
