@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setUser } from '../actions/UserActions';
 
 class Profile extends React.Component {
   constructor(props) {

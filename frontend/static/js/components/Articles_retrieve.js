@@ -1,9 +1,8 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { Route, BrowserRouter, Link } from "react-router-dom";
-import Articles_comment_form from "./Article_comment_form";
-import "./comp_style/article_retrieve.scss";
-import Articles_retrieve_all_notes from "./Articles_retrieve_all_notes";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import NoteCreate from './NoteCreate';
+import './comp_style/article_retrieve.scss';
+import Articles_retrieve_all_notes from './Articles_retrieve_all_notes';
 class Articles_retrieve extends React.Component {
   state = {
     items: [],
@@ -11,8 +10,8 @@ class Articles_retrieve extends React.Component {
   };
   componentDidMount() {
     const id = Number(this.props.match.params.number);
-    fetch("http://127.0.0.1:8000/articles/" + id, {
-      method: "GET",
+    fetch('http://127.0.0.1:8000/articles/' + id, {
+      method: 'GET',
     })
       .then((response) => {
         return response.json();
@@ -45,7 +44,7 @@ class Articles_retrieve extends React.Component {
         <div class="book">
           <p> {items.description}</p>
           <img src={items.date_publish}></img>
-          <Articles_comment_form />
+          <NoteCreate id_post={Number(this.props.match.params.number)} />
           <Articles_retrieve_all_notes
             id_post={Number(this.props.match.params.number)}
           />
