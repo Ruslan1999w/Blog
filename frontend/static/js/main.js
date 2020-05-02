@@ -1244,7 +1244,7 @@ module.exports = g;
 /***/ (function(module, exports, __webpack_require__) {
 
 var api = __webpack_require__(2);
-            var content = __webpack_require__(33);
+            var content = __webpack_require__(31);
 
             content = content.__esModule ? content.default : content;
 
@@ -1949,8 +1949,21 @@ module.exports = exports;
 /* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(3);
+exports = ___CSS_LOADER_API_IMPORT___(false);
+// Module
+exports.push([module.i, ".login-container{display:flex;justify-content:center;align-items:center;margin:1% 15%;min-height:80vh;color:#636b6f}.login-container form{position:relative;width:33vw;min-height:50vh;background-color:#ecf0f1;display:flex;flex-flow:row wrap}.login-container form a{color:#636b6f;text-decoration:none;margin:10px}.login-container form .form-group{margin:10px;height:10vh;width:90%}.login-container form .form-group label{margin-left:3vw;display:block;font-size:16px;color:#636b6f}.login-container form .form-group input{margin:0 auto;display:block;width:80%;padding:5px;font-size:24px;border:none;background-color:#fff;color:#636b6f}.login-container form .form-group h2{text-align:center}\n", ""]);
+// Exports
+module.exports = exports;
+
+
+/***/ }),
+/* 32 */
+/***/ (function(module, exports, __webpack_require__) {
+
 var api = __webpack_require__(2);
-            var content = __webpack_require__(32);
+            var content = __webpack_require__(33);
 
             content = content.__esModule ? content.default : content;
 
@@ -1972,19 +1985,6 @@ var exported = content.locals ? content.locals : {};
 module.exports = exported;
 
 /***/ }),
-/* 32 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(3);
-exports = ___CSS_LOADER_API_IMPORT___(false);
-// Module
-exports.push([module.i, "*{margin:0px;padding:0px;box-sizing:border-box}body{font-family:lato-regular, \"Helvetica Neue\", Helvetica, Arial, \"Hiragino Sans GB\", \"Microsoft YaHei\", sans-serif}.header{background-color:#9caebf;width:100vw;max-width:100vw;height:5vh}.header .container{display:flex;justify-content:center;align-items:center;margin:0 15%}.header .container img{margin-top:5px;padding-left:10px}.header .container li{color:azure;font-size:20px;font-weight:bold;padding:0 40px}.header .container a{color:azure}.header .container li:hover{background-color:azure;color:#9caebf;transition:0.2s}.header .container li:hover a{background-color:azure;color:#9caebf;transition:0.2s}.header .container input{margin:auto 40px auto 80px;font-size:20px;font-weight:bold;background:none;border:none;color:azure;padding:5px}.header .container input:hover{background-color:azure;color:#9caebf;transition:0.2s}.header .container img{padding:auto 40px}ul{list-style:none;font-size:14px;line-height:1.72222}ul li{display:inline-block;position:relative}ul li a{text-decoration:none;background-color:transparent;line-height:24px;color:azure}.wrapper .title{min-height:200px;background-color:#9caebf;color:azure}.wrapper .title .title-wrap{width:100%;padding-left:15px;padding-right:15px;margin-right:auto;margin-left:auto;height:100%}.wrapper .main{margin-bottom:30px}.wrapper .main .container{margin-left:auto;margin-right:auto;width:1170px;margin-right:8.33333333%}.wrapper .main .container .article{margin-top:30px !important;display:flex;font-family:inherit;font-weight:400;line-height:1.2;color:inherit;border-bottom:1px solid rgba(34,36,38,0.15);width:63%;height:180px;padding-bottom:30px}.wrapper .main .container .article .left img{border-radius:5px;width:260px;height:146px;vertical-align:middle}.wrapper .main .container .article .media{margin-left:10px;height:80%;overflow:hidden}.wrapper .main .container .article a{text-decoration:none;background-color:transparent;line-height:24px;color:#34495e}.wrapper .main .container .article h2{color:#95a5a6;font-size:1em;font-family:inherit}.wrapper .main .container .article p{font-size:1.4em;line-height:1em;color:#7f8c8d}.footer{background-color:#9caebf;color:azure;height:15vh}.footer .links{position:relative;height:7vh;display:flex;justify-content:center;align-items:center}.footer .links a{padding:10px}.footer .links img{position:relative;max-width:30px;max-height:30px}.footer h4,.footer h3{margin:5px 0;text-align:center}\n", ""]);
-// Exports
-module.exports = exports;
-
-
-/***/ }),
 /* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1992,7 +1992,7 @@ module.exports = exports;
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(3);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, ".login-container{display:flex;justify-content:center;align-items:center;margin:1% 15%;min-height:80vh;color:#636b6f}.login-container form{position:relative;width:33vw;min-height:50vh;background-color:#ecf0f1;display:flex;flex-flow:row wrap}.login-container form a{color:#636b6f;text-decoration:none;margin:10px}.login-container form .form-group{margin:10px;height:10vh;width:90%}.login-container form .form-group label{margin-left:3vw;display:block;font-size:16px;color:#636b6f}.login-container form .form-group input{margin:0 auto;display:block;width:80%;padding:5px;font-size:24px;border:none;background-color:#fff;color:#636b6f}.login-container form .form-group h2{text-align:center}\n", ""]);
+exports.push([module.i, ".wrapper{display:flex;justify-content:center;flex-flow:column wrap}.wrapper .title{display:flex;align-items:center}.wrapper .title h1{text-align:center;width:100%;padding:40px auto}.wrapper h1{text-align:center;width:100%;padding:40px auto}.wrapper .info{width:1170px;margin:0 auto}.wrapper .info p{text-align:center;width:100%;margin:40px auto;padding:40px auto;font-size:20px}.wrapper .authors{display:flex;flex-flow:row wrap;justify-content:center}.wrapper .authors .author{margin:20px;padding:40px;text-align:center}.wrapper .authors .author img{max-width:300px;max-height:300px;min-width:300px;min-height:300px}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -2031,7 +2031,7 @@ module.exports = exported;
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(3);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, ".wrapper{display:flex;justify-content:center;flex-flow:column wrap}.wrapper .title{display:flex;align-items:center}.wrapper .title h1{text-align:center;width:100%;padding:40px auto}.wrapper h1{text-align:center;width:100%;padding:40px auto}.wrapper .info{width:1170px;margin:0 auto}.wrapper .info p{text-align:center;width:100%;margin:40px auto;padding:40px auto;font-size:20px}.wrapper .authors{display:flex;flex-flow:row wrap;justify-content:center}.wrapper .authors .author{margin:20px;padding:40px;text-align:center}.wrapper .authors .author img{max-width:300px;max-height:300px;min-width:300px;min-height:300px}\n", ""]);
+exports.push([module.i, "*{margin:0px;padding:0px;box-sizing:border-box}body{font-family:lato-regular, \"Helvetica Neue\", Helvetica, Arial, \"Hiragino Sans GB\", \"Microsoft YaHei\", sans-serif}.header{background-color:#9caebf;width:100vw;max-width:100vw;height:5vh}.header .container{display:flex;justify-content:center;align-items:center;margin:0 15%}.header .container img{margin-top:5px;padding-left:10px}.header .container li{color:azure;font-size:20px;font-weight:bold;padding:0 40px}.header .container a{color:azure}.header .container li:hover{background-color:azure;color:#9caebf;transition:0.2s}.header .container li:hover a{background-color:azure;color:#9caebf;transition:0.2s}.header .container input{margin:auto 40px auto 80px;font-size:20px;font-weight:bold;background:none;border:none;color:azure;padding:5px}.header .container input:hover{background-color:azure;color:#9caebf;transition:0.2s}.header .container img{padding:auto 40px}ul{list-style:none;font-size:14px;line-height:1.72222}ul li{display:inline-block;position:relative}ul li a{text-decoration:none;background-color:transparent;line-height:24px;color:azure}.wrapper .title{min-height:200px;background-color:#9caebf;color:azure}.wrapper .title .title-wrap{width:100%;padding-left:15px;padding-right:15px;margin-right:auto;margin-left:auto;height:100%}.wrapper .main{margin-bottom:30px}.wrapper .main .container{margin-left:auto;margin-right:auto;width:1170px;margin-right:8.33333333%}.wrapper .main .container .article{margin-top:30px !important;display:flex;font-family:inherit;font-weight:400;line-height:1.2;color:inherit;border-bottom:1px solid rgba(34,36,38,0.15);width:63%;height:180px;padding-bottom:30px}.wrapper .main .container .article .left img{border-radius:5px;width:260px;height:146px;vertical-align:middle}.wrapper .main .container .article .media{margin-left:10px;height:80%;overflow:hidden}.wrapper .main .container .article a{text-decoration:none;background-color:transparent;line-height:24px;color:#34495e}.wrapper .main .container .article h2{color:#95a5a6;font-size:1em;font-family:inherit}.wrapper .main .container .article p{font-size:1.4em;line-height:1em;color:#7f8c8d}.footer{background-color:#9caebf;color:azure;height:15vh}.footer .links{position:relative;height:7vh;display:flex;justify-content:center;align-items:center}.footer .links a{padding:10px}.footer .links img{position:relative;max-width:30px;max-height:30px}.footer h4,.footer h3{margin:5px 0;text-align:center}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -6379,74 +6379,70 @@ var Articles_list_Articles_list = /*#__PURE__*/function (_React$Component) {
 // EXTERNAL MODULE: ./static/js/components/comp_style/article_comment_form.scss
 var article_comment_form = __webpack_require__(25);
 
-// CONCATENATED MODULE: ./static/js/components/Article_comment_form.js
-function Article_comment_form_typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { Article_comment_form_typeof = function _typeof(obj) { return typeof obj; }; } else { Article_comment_form_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return Article_comment_form_typeof(obj); }
+// CONCATENATED MODULE: ./static/js/components/NoteCreate.js
+function NoteCreate_typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { NoteCreate_typeof = function _typeof(obj) { return typeof obj; }; } else { NoteCreate_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return NoteCreate_typeof(obj); }
 
-function Article_comment_form_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function NoteCreate_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function Article_comment_form_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function NoteCreate_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function Article_comment_form_createClass(Constructor, protoProps, staticProps) { if (protoProps) Article_comment_form_defineProperties(Constructor.prototype, protoProps); if (staticProps) Article_comment_form_defineProperties(Constructor, staticProps); return Constructor; }
+function NoteCreate_createClass(Constructor, protoProps, staticProps) { if (protoProps) NoteCreate_defineProperties(Constructor.prototype, protoProps); if (staticProps) NoteCreate_defineProperties(Constructor, staticProps); return Constructor; }
 
-function Article_comment_form_createSuper(Derived) { return function () { var Super = Article_comment_form_getPrototypeOf(Derived), result; if (Article_comment_form_isNativeReflectConstruct()) { var NewTarget = Article_comment_form_getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return Article_comment_form_possibleConstructorReturn(this, result); }; }
+function NoteCreate_createSuper(Derived) { return function () { var Super = NoteCreate_getPrototypeOf(Derived), result; if (NoteCreate_isNativeReflectConstruct()) { var NewTarget = NoteCreate_getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return NoteCreate_possibleConstructorReturn(this, result); }; }
 
-function Article_comment_form_possibleConstructorReturn(self, call) { if (call && (Article_comment_form_typeof(call) === "object" || typeof call === "function")) { return call; } return Article_comment_form_assertThisInitialized(self); }
+function NoteCreate_possibleConstructorReturn(self, call) { if (call && (NoteCreate_typeof(call) === "object" || typeof call === "function")) { return call; } return NoteCreate_assertThisInitialized(self); }
 
-function Article_comment_form_assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function NoteCreate_assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function Article_comment_form_isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+function NoteCreate_isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
-function Article_comment_form_getPrototypeOf(o) { Article_comment_form_getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return Article_comment_form_getPrototypeOf(o); }
+function NoteCreate_getPrototypeOf(o) { NoteCreate_getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return NoteCreate_getPrototypeOf(o); }
 
-function Article_comment_form_inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) Article_comment_form_setPrototypeOf(subClass, superClass); }
+function NoteCreate_inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) NoteCreate_setPrototypeOf(subClass, superClass); }
 
-function Article_comment_form_setPrototypeOf(o, p) { Article_comment_form_setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return Article_comment_form_setPrototypeOf(o, p); }
-
-function Article_comment_form_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function NoteCreate_setPrototypeOf(o, p) { NoteCreate_setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return NoteCreate_setPrototypeOf(o, p); }
 
 
 
 
-var Article_comment_form_Article_comment_form = /*#__PURE__*/function (_React$Component) {
-  Article_comment_form_inherits(Article_comment_form, _React$Component);
 
-  var _super = Article_comment_form_createSuper(Article_comment_form);
+var NoteCreate_NoteCreate = /*#__PURE__*/function (_React$Component) {
+  NoteCreate_inherits(NoteCreate, _React$Component);
 
-  function Article_comment_form() {
+  var _super = NoteCreate_createSuper(NoteCreate);
+
+  function NoteCreate(props) {
     var _this;
 
-    Article_comment_form_classCallCheck(this, Article_comment_form);
+    NoteCreate_classCallCheck(this, NoteCreate);
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _super.call.apply(_super, [this].concat(args));
-
-    Article_comment_form_defineProperty(Article_comment_form_assertThisInitialized(_this), "state", {
+    _this = _super.call(this, props);
+    _this.state = {
       comments: [],
       creator: []
-    });
-
+    };
+    _this.onSubmit = _this.onSubmit.bind(NoteCreate_assertThisInitialized(_this));
     return _this;
   }
 
-  Article_comment_form_createClass(Article_comment_form, [{
+  NoteCreate_createClass(NoteCreate, [{
     key: "onSubmit",
     value: function onSubmit(event) {
-      var comments = document.getElementById("comments").value;
       var comment = {
-        description: comments,
-        id_post: 1
+        description: document.getElementById('comments').value,
+        id_post: [this.props.id_post]
       };
-      var response = fetch("http://127.0.0.1:8000/notes/", {
-        method: "POST",
+      console.log(comment);
+      fetch('http://127.0.0.1:8000/notes/', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json;charset=utf-8"
+          'Content-Type': 'application/json;charset=utf-8',
+          Authorization: this.props.user.token
         },
         body: JSON.stringify(comment)
+      }).then(function (response) {
+        if (response.ok) alert(response.ok);else console.log(response.status);
       });
-      if (response.ok) alert(response.ok);
       event.preventDefault();
     }
   }, {
@@ -6476,10 +6472,17 @@ var Article_comment_form_Article_comment_form = /*#__PURE__*/function (_React$Co
     }
   }]);
 
-  return Article_comment_form;
+  return NoteCreate;
 }(react_default.a.Component);
 
-/* harmony default export */ var components_Article_comment_form = (Article_comment_form_Article_comment_form);
+var NoteCreate_mapStateToProps = function mapStateToProps(store) {
+  return {
+    user: store.user,
+    test: store.test
+  };
+};
+
+/* harmony default export */ var components_NoteCreate = (connect_connect(NoteCreate_mapStateToProps)(NoteCreate_NoteCreate));
 // EXTERNAL MODULE: ./static/js/components/comp_style/article_retrieve.scss
 var article_retrieve = __webpack_require__(27);
 
@@ -6599,7 +6602,6 @@ function Articles_retrieve_defineProperty(obj, key, value) { if (key in obj) { O
 
 
 
-
 var Articles_retrieve_Articles_retrieve = /*#__PURE__*/function (_React$Component) {
   Articles_retrieve_inherits(Articles_retrieve, _React$Component);
 
@@ -6630,8 +6632,8 @@ var Articles_retrieve_Articles_retrieve = /*#__PURE__*/function (_React$Componen
       var _this2 = this;
 
       var id = Number(this.props.match.params.number);
-      fetch("http://127.0.0.1:8000/articles/" + id, {
-        method: "GET"
+      fetch('http://127.0.0.1:8000/articles/' + id, {
+        method: 'GET'
       }).then(function (response) {
         return response.json();
       }).then(function (data) {
@@ -6668,7 +6670,9 @@ var Articles_retrieve_Articles_retrieve = /*#__PURE__*/function (_React$Componen
         "class": "book"
       }, /*#__PURE__*/react_default.a.createElement("p", null, " ", items.description), /*#__PURE__*/react_default.a.createElement("img", {
         src: items.date_publish
-      }), /*#__PURE__*/react_default.a.createElement(components_Article_comment_form, null), /*#__PURE__*/react_default.a.createElement(components_Articles_retrieve_all_notes, {
+      }), /*#__PURE__*/react_default.a.createElement(components_NoteCreate, {
+        id_post: Number(this.props.match.params.number)
+      }), /*#__PURE__*/react_default.a.createElement(components_Articles_retrieve_all_notes, {
         id_post: Number(this.props.match.params.number)
       })));
     }
@@ -6869,81 +6873,6 @@ var User_list_User_list = /*#__PURE__*/function (_React$Component) {
 }(react_default.a.Component);
 
 /* harmony default export */ var components_User_list = (User_list_User_list);
-// EXTERNAL MODULE: ./static/css/main.scss
-var main = __webpack_require__(31);
-
-// CONCATENATED MODULE: ./static/js/reducers/userReducer.js
-function userReducer_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { userReducer_ownKeys(Object(source), true).forEach(function (key) { userReducer_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { userReducer_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function userReducer_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var initialState = {
-  Token: 'Token undef'
-};
-function userReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
-  var action = arguments.length > 1 ? arguments[1] : undefined;
-
-  switch (action.type) {
-    case 'AUTH_USER':
-      return _objectSpread({}, state, {
-        Token: action.payload
-      });
-  }
-
-  return state;
-}
-// CONCATENATED MODULE: ./static/js/reducers/test_reducer.js
-function test_reducer_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function test_reducer_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { test_reducer_ownKeys(Object(source), true).forEach(function (key) { test_reducer_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { test_reducer_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function test_reducer_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var test_reducer_initialState = {
-  name: 'TEST'
-};
-function test_reducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : test_reducer_initialState;
-  var action = arguments.length > 1 ? arguments[1] : undefined;
-
-  switch (action.type) {
-    case 'TEST':
-      console.log('test_reducer ' + state);
-      return test_reducer_objectSpread({}, state, {
-        test: action.payload
-      });
-  }
-
-  return state;
-}
-// CONCATENATED MODULE: ./static/js/reducers/rootReducer.js
-
-
-
-var rootReducer = combineReducers({
-  user: userReducer,
-  test: test_reducer
-});
-// CONCATENATED MODULE: ./static/js/store/store.js
-
-
-var store_store = createStore(rootReducer);
-store_store.subscribe(function () {
-  console.log('subscribe', store_store.getState());
-});
-// CONCATENATED MODULE: ./static/js/actions/UserActions.js
-
-var AUTH_USER = 'AUTH_USER';
-function setUser(user) {
-  var action = {
-    type: 'AUTH_USER',
-    payload: user
-  };
-  store_store.dispatch(action);
-}
 // CONCATENATED MODULE: ./static/js/components/Profile.js
 function Profile_typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { Profile_typeof = function _typeof(obj) { return typeof obj; }; } else { Profile_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return Profile_typeof(obj); }
 
@@ -6968,7 +6897,6 @@ function Profile_inherits(subClass, superClass) { if (typeof superClass !== "fun
 function Profile_setPrototypeOf(o, p) { Profile_setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return Profile_setPrototypeOf(o, p); }
 
 function Profile_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 
@@ -7058,6 +6986,79 @@ var Profile_mapStateToProps = function mapStateToProps(store) {
 };
 
 /* harmony default export */ var components_Profile = (connect_connect(Profile_mapStateToProps)(Profile_Profile));
+// CONCATENATED MODULE: ./static/js/reducers/userReducer.js
+function userReducer_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { userReducer_ownKeys(Object(source), true).forEach(function (key) { userReducer_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { userReducer_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function userReducer_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var initialState = {
+  token: 'Token 9a4378dd6e025967e0c606b3bcbe4780070637f1' //во время прокашн токен должен быть удален
+
+};
+function userReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case 'AUTH_USER':
+      return _objectSpread({}, state, {
+        token: action.payload
+      });
+  }
+
+  return state;
+}
+// CONCATENATED MODULE: ./static/js/reducers/test_reducer.js
+function test_reducer_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function test_reducer_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { test_reducer_ownKeys(Object(source), true).forEach(function (key) { test_reducer_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { test_reducer_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function test_reducer_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var test_reducer_initialState = {
+  name: 'TEST'
+};
+function test_reducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : test_reducer_initialState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case 'TEST':
+      console.log('test_reducer ' + state);
+      return test_reducer_objectSpread({}, state, {
+        test: action.payload
+      });
+  }
+
+  return state;
+}
+// CONCATENATED MODULE: ./static/js/reducers/rootReducer.js
+
+
+
+var rootReducer = combineReducers({
+  user: userReducer,
+  test: test_reducer
+});
+// CONCATENATED MODULE: ./static/js/store/store.js
+
+
+var store_store = createStore(rootReducer);
+store_store.subscribe(function () {
+  console.log('subscribe', store_store.getState());
+});
+// CONCATENATED MODULE: ./static/js/actions/UserActions.js
+
+var AUTH_USER = 'AUTH_USER';
+function UserActions_setUser(user) {
+  var action = {
+    type: 'AUTH_USER',
+    payload: user
+  };
+  store_store.dispatch(action);
+}
 // EXTERNAL MODULE: ./static/js/components/comp_style/loginform.scss
 var loginform = __webpack_require__(13);
 
@@ -7126,13 +7127,12 @@ var LogIn_LoginForm = /*#__PURE__*/function (_React$Component) {
         body: JSON.stringify(user)
       }).then(function (response) {
         if (response.ok) {
-          // alert(`${this.state.login}, добро пожаловать! `);
           console.log(response);
         } else alert('try again ', response.status);
 
         return response.json();
       }).then(function (data) {
-        setUser(data.token);
+        UserActions_setUser(data.token);
       });
       event.preventDefault();
     }
@@ -7409,12 +7409,12 @@ var Register_RegisterForm = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      login: "",
-      password: "",
-      first_name: "",
-      last_name: "",
-      email: "",
-      date_joined: ""
+      login: '',
+      password: '',
+      first_name: '',
+      last_name: '',
+      email: '',
+      date_joined: ''
     };
     _this.onSubmit = _this.onSubmit.bind(Register_assertThisInitialized(_this));
     return _this;
@@ -7423,11 +7423,11 @@ var Register_RegisterForm = /*#__PURE__*/function (_React$Component) {
   Register_createClass(RegisterForm, [{
     key: "onSubmit",
     value: function onSubmit(event) {
-      var username = document.getElementById("login-input").value;
-      var password = document.getElementById("pass-input").value;
-      var first_name = document.getElementById("name-input").value;
-      var last_name = document.getElementById("last-input").value;
-      var email = document.getElementById("email-input").value;
+      var username = document.getElementById('login-input').value;
+      var password = document.getElementById('pass-input').value;
+      var first_name = document.getElementById('name-input').value;
+      var last_name = document.getElementById('last-input').value;
+      var email = document.getElementById('email-input').value;
       var date_joined = new Date();
       var user = {
         username: username,
@@ -7438,12 +7438,20 @@ var Register_RegisterForm = /*#__PURE__*/function (_React$Component) {
         date_joined: date_joined
       };
       alert(user.username);
-      var response = fetch("http://127.0.0.1:8000/auth/", {
-        method: "POST",
+      var response = fetch('http://127.0.0.1:8000/auth/', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json;charset=utf-8"
+          'Content-Type': 'application/json;charset=utf-8'
         },
         body: JSON.stringify(user)
+      }).then(function (response) {
+        if (response.ok) {
+          console.log(response);
+        } else alert('try again ', response.status);
+
+        return response.json();
+      }).then(function (data) {
+        setUser(data.token);
       });
       if (response.ok) alert("".concat(this.state.login, ", \u0434\u043E\u0431\u0440\u043E \u043F\u043E\u0436\u0430\u043B\u043E\u0432\u0430\u0442\u044C! ") + response);
       event.preventDefault();
@@ -7504,7 +7512,7 @@ var Register_RegisterForm = /*#__PURE__*/function (_React$Component) {
 
 /* harmony default export */ var Register = (Register_RegisterForm);
 // EXTERNAL MODULE: ./static/js/components/comp_style/about.scss
-var about = __webpack_require__(34);
+var about = __webpack_require__(32);
 
 // CONCATENATED MODULE: ./static/js/components/AboutUs.js
 function AboutUs_typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { AboutUs_typeof = function _typeof(obj) { return typeof obj; }; } else { AboutUs_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return AboutUs_typeof(obj); }
@@ -7573,6 +7581,9 @@ var AboutUs_AboutUs = /*#__PURE__*/function (_React$Component) {
 }(react_default.a.Component);
 
 /* harmony default export */ var components_AboutUs = (AboutUs_AboutUs);
+// EXTERNAL MODULE: ./static/css/main.scss
+var main = __webpack_require__(34);
+
 // CONCATENATED MODULE: ./static/js/index.js
 
 

@@ -48,7 +48,7 @@ class PostForNoteSerializer(serializers.ModelSerializer):
 
 
 class NoteSerializer(serializers.ModelSerializer):  # Сериалайзер для комментария
-    id_post = PostForNoteSerializer(many=False, required=False)
+    #id_post = PostForNoteSerializer(many=False, required=False)
 
     class Meta:
         model = Note

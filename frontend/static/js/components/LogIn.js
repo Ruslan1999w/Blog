@@ -28,7 +28,6 @@ class LoginForm extends React.Component {
     })
       .then((response) => {
         if (response.ok) {
-          // alert(`${this.state.login}, добро пожаловать! `);
           console.log(response);
         } else alert('try again ', response.status);
         return response.json();

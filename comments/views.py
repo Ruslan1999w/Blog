@@ -39,7 +39,7 @@ class NotesViewSet(viewsets.ViewSet):
         queryset.save()
         return Response(status=status.HTTP_200_OK)
 
-    def destroy(self, request):  # Удаление комментария по его id
-        queryset = Note.objects.get(id_note=request.data['id_note'])
+    def destroy(self, request, pk=None):  # Удаление комментария по его id
+        queryset = Note.objects.get(id_note=pk)
         queryset.delete()
         return Response(status=status.HTTP_200_OK)
