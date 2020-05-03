@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { setUser } from '../actions/UserActions';
-import './comp_style/loginform.scss';
 import { Link } from 'react-router-dom';
+import { setCookie, getCookie } from '../cookie';
+import './comp_style/loginform.scss';
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -33,6 +34,7 @@ class LoginForm extends React.Component {
         return response.json();
       })
       .then((data) => {
+        setCookie(user, data.user, { secure: true, 'max-age': 3600 });
         setUser(data.token);
       });
 

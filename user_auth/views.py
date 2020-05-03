@@ -10,6 +10,7 @@ from rest_framework.permissions import IsAdminUser, AllowAny, IsAuthenticated
 from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
 from data.serializers import *
+from django.http import HttpResponse
 
 
 class UserViewSet(viewsets.ViewSet):  # класс предоставляющий возможности работы с пользователем: листинг всех
@@ -76,8 +77,8 @@ class AuthViewSet(viewsets.ViewSet):  # класс предоставляющи�
             return Response({'error': 'Invalid Credentials'},
                             status=HTTP_404_NOT_FOUND)
         token, _ = Token.objects.get_or_create(user=user)
-        return Response({'token': token.key, 'just_something': "just string"},
-                        status=HTTP_200_OK)
+
+        return Response({'token': token.key, 'user': username}, status=HTTP_200_OK)
 
     @action(methods=['post'], detail=False, permission_classes=[IsAuthenticated])
     def logout(self, request):  # функция разлогинивания, т.е. удаление токена из бд
@@ -85,8 +86,10 @@ class AuthViewSet(viewsets.ViewSet):  # класс предоставляющи�
         user_logout.delete()
         return Response(status=HTTP_200_OK)
 
-    @action(methods=['get'], detail=False, permission_classes=[IsAuthenticated])  # Личный кабинет пользователя
+    @action(methods=['get'], detail=False, permission_classes=[IsAuthenticated])  # Личный кабинет пользователя или
+    # #profile
     def personal_account(self, request):
+        print(request.session)
         queryset = AuthUser.objects.get(id=request.user.id)
         serializer = UserProfileSerializer(queryset, many=False)
         return Response(serializer.data, status=status.HTTP_200_OK)

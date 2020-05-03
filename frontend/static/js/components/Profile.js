@@ -15,7 +15,7 @@ class Profile extends React.Component {
   componentDidMount() {
     fetch('http://127.0.0.1:8000/auth/personal_account/', {
       headers: {
-        Authorization: this.props.user.credentials,
+        Authorization: this.props.user.token,
         method: 'GET',
       },
     })
@@ -24,7 +24,7 @@ class Profile extends React.Component {
       })
 
       .then((data) => {
-        console.log(data);
+        console.log(document.cookie);
         let comment_list = data.auth_user.map((com) => {
           return com;
         });

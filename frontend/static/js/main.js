@@ -6929,13 +6929,13 @@ var Profile_Profile = /*#__PURE__*/function (_React$Component) {
 
       fetch('http://127.0.0.1:8000/auth/personal_account/', {
         headers: {
-          Authorization: this.props.user.credentials,
+          Authorization: this.props.user.token,
           method: 'GET'
         }
       }).then(function (response) {
         return response.json();
       }).then(function (data) {
-        console.log(data);
+        console.log(document.cookie);
         var comment_list = data.auth_user.map(function (com) {
           return com;
         });
@@ -7059,6 +7059,47 @@ function UserActions_setUser(user) {
   };
   store_store.dispatch(action);
 }
+// CONCATENATED MODULE: ./static/js/cookie.js
+function cookie_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function cookie_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { cookie_ownKeys(Object(source), true).forEach(function (key) { cookie_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { cookie_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function cookie_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+// возвращает куки с указанным name,
+// или undefined, если ничего не найдено
+function getCookie(name) {
+  var matches = document.cookie.match(new RegExp('(?:^|; )' + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + '=([^;]*)'));
+  return matches ? decodeURIComponent(matches[1]) : undefined;
+}
+function setCookie(name, value) {
+  var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+  options = cookie_objectSpread({
+    path: '/'
+  }, options);
+
+  if (options.expires instanceof Date) {
+    options.expires = options.expires.toUTCString();
+  }
+
+  var updatedCookie = encodeURIComponent(name) + '=' + encodeURIComponent(value);
+
+  for (var optionKey in options) {
+    updatedCookie += '; ' + optionKey;
+    var optionValue = options[optionKey];
+
+    if (optionValue !== true) {
+      updatedCookie += '=' + optionValue;
+    }
+  }
+
+  document.cookie = updatedCookie;
+}
+function deleteCookie(name) {
+  setCookie(name, '', {
+    'max-age': -1
+  });
+}
 // EXTERNAL MODULE: ./static/js/components/comp_style/loginform.scss
 var loginform = __webpack_require__(13);
 
@@ -7084,6 +7125,7 @@ function LogIn_getPrototypeOf(o) { LogIn_getPrototypeOf = Object.setPrototypeOf 
 function LogIn_inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) LogIn_setPrototypeOf(subClass, superClass); }
 
 function LogIn_setPrototypeOf(o, p) { LogIn_setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return LogIn_setPrototypeOf(o, p); }
+
 
 
 
@@ -7132,6 +7174,10 @@ var LogIn_LoginForm = /*#__PURE__*/function (_React$Component) {
 
         return response.json();
       }).then(function (data) {
+        setCookie(user, data.user, {
+          secure: true,
+          'max-age': 3600
+        });
         UserActions_setUser(data.token);
       });
       event.preventDefault();
